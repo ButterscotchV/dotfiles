@@ -131,6 +131,8 @@ in
     haruna # Open source video player built with Qt/QML and libmpv
     wayland-utils # Wayland utilities
     wl-clipboard # Command-line copy/paste utilities for Wayland
+
+    git-credential-manager
   ];
 
   # basic configuration of git, please change to your own
@@ -142,6 +144,11 @@ in
     extraConfig = {
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
+      credential = {
+        helper = "manager";
+        "https://github.com".username = "ButterscotchV";
+        credentialStore = "cache";
+      };
     };
   };
 
