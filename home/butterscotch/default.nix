@@ -116,7 +116,6 @@ in
     jetbrains.idea-community
     slimevr
 
-
     kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
     kdePackages.kcalc # Calculator
     kdePackages.kcharselect # Tool to select and copy special characters from all installed fonts

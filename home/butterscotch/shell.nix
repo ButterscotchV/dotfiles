@@ -12,10 +12,10 @@
     autocd = true;
     dotDir = ".config/zsh";
     enableAutosuggestions = true;
-    enableCompletion = true; 
+    enableCompletion = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ 
+      plugins = [
         "git"
         "python"
         "man"
