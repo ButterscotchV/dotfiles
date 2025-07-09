@@ -133,6 +133,8 @@ in
     wl-clipboard # Command-line copy/paste utilities for Wayland
 
     git-credential-manager
+    krita
+    github-desktop
   ];
 
   # basic configuration of git, please change to your own
