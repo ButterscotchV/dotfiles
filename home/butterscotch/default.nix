@@ -134,6 +134,7 @@ in
     git-credential-manager
     krita
     github-desktop
+    vlc
   ];
 
   # basic configuration of git, please change to your own
