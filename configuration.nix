@@ -85,7 +85,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.butterscotch = {
     isNormalUser = true;
-    description = "butterscotch";
+    description = "Butterscotch!";
     extraGroups = [
       "networkmanager"
       "wheel"
