@@ -42,13 +42,6 @@
   services.xserver = {
     enable = true;
     videoDrivers = [ "amdgpu" ];
-    displayManager = {
-      gdm = {
-        enable = true;
-        wayland = true;
-      };
-    };
-    # desktopManager.gnome.enable = true;
     xkb = {
       layout = "us";
       variant = "";
@@ -57,7 +50,10 @@
 
   services = {
     desktopManager.plasma6.enable = true;
+    displayManager.sddm.enable = true;
+    displayManager.sddm.wayland.enable = true;
   };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 

@@ -11,7 +11,9 @@
     enable = true;
     autocd = true;
     dotDir = ".config/zsh";
-    enableAutosuggestions = true;
+    autosuggestion = {
+      enable = true;
+    };
     enableCompletion = true;
     oh-my-zsh = {
       enable = true;
