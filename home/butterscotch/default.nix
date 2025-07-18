@@ -167,6 +167,7 @@ in
         pkg-config
         temurin-bin-17
         temurin-bin-21
+        nodejs
       ]
     );
     # profiles.default.userSettings = {
