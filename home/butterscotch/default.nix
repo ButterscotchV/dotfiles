@@ -39,6 +39,7 @@ in
     (pkgs.makeDesktopItem {
       name = "discord";
       exec = "discord";
+      icon = "${pkgs.discord}/share/pixmaps/discord.png";
       desktopName = "Discord";
     })
     spotify
