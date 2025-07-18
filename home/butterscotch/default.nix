@@ -2,6 +2,7 @@
   config,
   inputs,
   pkgs,
+  pkgsStable,
   lib,
   ...
 }:
@@ -118,6 +119,8 @@ in
 
     # TODO: Re-enable when functional again on unstable
     # jetbrains.idea-community
+    (pkgsStable.jetbrains.idea-community)
+
     slimevr
 
     kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
