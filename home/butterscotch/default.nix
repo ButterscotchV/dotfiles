@@ -207,6 +207,21 @@ in
 
   # programs.direnv.enable = true;
 
+  home.language = {
+    base = "en_CA.UTF-8";
+    ctype = "en_CA.UTF-8";
+    numeric = "en_CA.UTF-8";
+    time = "en_CA.UTF-8";
+    collate = "en_CA.UTF-8";
+    monetary = "en_CA.UTF-8";
+    messages = "en_CA.UTF-8";
+    paper = "en_CA.UTF-8";
+    name = "en_CA.UTF-8";
+    address = "en_CA.UTF-8";
+    telephone = "en_CA.UTF-8";
+    measurement = "en_CA.UTF-8";
+  };
+
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
