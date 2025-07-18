@@ -159,6 +159,16 @@ in
 
   programs.vscode = {
     enable = true;
+    package = pkgs.vscode.fhsWithPackages (
+      ps: with ps; [
+        rustup
+        zlib
+        openssl.dev
+        pkg-config
+        temurin-bin-17
+        temurin-bin-21
+      ]
+    );
     # profiles.default.userSettings = {
     #   "editor.formatOnSave" = true;
     # };
