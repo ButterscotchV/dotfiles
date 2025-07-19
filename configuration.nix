@@ -92,6 +92,9 @@
     shell = pkgs.zsh;
   };
 
+  # For Plex Desktop sign in
+  xdg.portal.xdgOpenUsePortal = true;
+
   virtualisation = {
     docker = {
       enable = true;
@@ -166,6 +169,11 @@
       text = builtins.readFile ./udev/69-slimevr-devices.rules;
     })
   ];
+
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

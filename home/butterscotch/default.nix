@@ -142,6 +142,8 @@ in
     krita
     github-desktop
     vlc
+    bitwarden
+    telegram-desktop
   ];
 
   # basic configuration of git, please change to your own
