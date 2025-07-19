@@ -172,6 +172,8 @@ in
         temurin-bin-17
         temurin-bin-21
         nodejs
+        dotnet-aspnetcore_8
+        dotnet-aspnetcore_9
       ]
     );
     # profiles.default.userSettings = {
