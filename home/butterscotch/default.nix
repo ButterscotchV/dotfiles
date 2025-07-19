@@ -174,6 +174,7 @@ in
         nodejs
         dotnet-aspnetcore_8
         dotnet-aspnetcore_9
+        python3
       ]
     );
     # profiles.default.userSettings = {
