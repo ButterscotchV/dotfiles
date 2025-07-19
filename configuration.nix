@@ -159,6 +159,14 @@
 
   services.blueman.enable = true;
 
+  services.udev.packages = [
+    (pkgs.writeTextFile {
+      name = "slimevr-udev-rules";
+      destination = "/etc/udev/rules.d/69-slimevr-devices.rules";
+      text = builtins.readFile ./udev/69-slimevr-devices.rules;
+    })
+  ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
