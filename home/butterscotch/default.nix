@@ -142,7 +142,7 @@ in
     krita
     github-desktop
     vlc
-    bitwarden
+    bitwarden-desktop
     telegram-desktop
   ];
 
