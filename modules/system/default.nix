@@ -32,6 +32,9 @@
   };
 
   # Power configuration
+  # Disable default power profiles
+  services.power-profiles-daemon.enable = false;
+  # Enable auto-cpufreq instead
   services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {
     battery = {
