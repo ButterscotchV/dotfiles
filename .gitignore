@@ -1,0 +1,23 @@
+# Nix build artifacts
+result
+result-*
+*.drv
+
+# Direnv
+.direnv
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+*.sublime-workspace
+
+# Secrets (ensure not committed)
+secrets/
