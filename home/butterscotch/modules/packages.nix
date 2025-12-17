@@ -29,6 +29,12 @@
     vlc
     spotify
 
+    # === Office ===
+    libreoffice-qt
+    hunspell # For LibreOffice
+    hyphenDicts.en_US # For LibreOffice
+    onlyoffice-bin
+
     # === Security ===
     bitwarden-desktop
 
