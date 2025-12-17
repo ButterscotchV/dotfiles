@@ -33,7 +33,7 @@
     libreoffice-qt
     hunspell # For LibreOffice
     hyphenDicts.en_US # For LibreOffice
-    onlyoffice-bin
+    onlyoffice-desktopeditors
 
     # === Security ===
     bitwarden-desktop
