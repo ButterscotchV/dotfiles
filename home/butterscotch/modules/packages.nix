@@ -54,7 +54,7 @@
     github-desktop
     jq # JSON processor
     nix-output-monitor # nom
-    nixfmt-rfc-style # nixfmt
+    nixfmt
 
     # === IDE ===
     jetbrains.idea
