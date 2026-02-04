@@ -57,7 +57,7 @@
     nixfmt-rfc-style # nixfmt
 
     # === IDE ===
-    jetbrains.idea-community
+    jetbrains.idea
 
     # === Gaming ===
     (prismlauncher.override {
