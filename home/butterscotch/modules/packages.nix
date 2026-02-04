@@ -28,6 +28,7 @@
     })
     vlc
     spotify
+    qbittorrent
 
     # === Office ===
     libreoffice-qt
@@ -37,6 +38,7 @@
 
     # === Security ===
     bitwarden-desktop
+    kdePackages.kleopatra # GPG GUI
 
     # === Runtimes ===
     bottles
