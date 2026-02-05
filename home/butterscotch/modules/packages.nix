@@ -69,5 +69,6 @@
       ];
     })
     slimevr
+    moonlight-qt
   ];
 }
