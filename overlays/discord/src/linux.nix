@@ -21,7 +21,6 @@
   cups,
   dbus,
   expat,
-  fontconfig,
   freetype,
   gdk-pixbuf,
   glib,
@@ -50,7 +49,6 @@
   libgbm,
   nspr,
   nss,
-  openssl_1_1,
   pango,
   systemdLibs,
   libappindicator-gtk3,
@@ -98,6 +96,13 @@ let
 
     nativeBuildInputs = [ brotli ];
 
+    # Disable automatic patching that could modify binaries
+    dontPatchELF = true;
+    dontStrip = true;
+    dontPatchShebangs = true;
+
+    dontBuild = true;
+    dontConfigure = true;
     dontUnpack = isDistro;
 
     installPhase = ''
@@ -129,11 +134,11 @@ let
     name = "${pname}-fhs";
     targetPkgs = pkgs: with pkgs; [
       # All libraries from your original libPath
-      alsa-lib at-spi2-atk at-spi2-core atk brotli cairo cups dbus expat fontconfig
+      alsa-lib at-spi2-atk at-spi2-core atk brotli cairo cups dbus expat
       freetype gdk-pixbuf glib gtk3 libcxx libdrm libgbm libglvnd libnotify
       libpulseaudio libunity libuuid libva libx11 libxcb libxcomposite libxcursor
       libxdamage libxext libxfixes libxi libxkbcommon libxrandr libxrender
-      libxshmfence libxscrnsaver libxtst nspr nss openssl_1_1 pango pipewire
+      libxshmfence libxscrnsaver libxtst nspr nss pango pipewire
       systemdLibs wayland libappindicator-gtk3 libdbusmenu
     ] ++ lib.optionals withTTS [ speechd-minimal ];
 
@@ -165,7 +170,7 @@ in runCommand pname { inherit meta; } ''
 
   # Link the FHS wrapper
   ln -s ${fhsEnv}/bin/${pname}-fhs $out/bin/${pname}
-  ln -s ${fhsEnv}/bin/${pname}-fhs $out/bin/${lib.toLower binaryName}
+  # ln -s ${fhsEnv}/bin/${pname}-fhs $out/bin/${lib.toLower binaryName}
 
   # Link Desktop Assets
   cp ${desktopItem}/share/applications/* $out/share/applications/
