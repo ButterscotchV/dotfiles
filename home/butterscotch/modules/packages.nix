@@ -15,9 +15,7 @@
     firefox
 
     # === Communication ===
-    (discord.override {
-      withKrisp = true;
-    })
+    discord
     telegram-desktop
 
     # === Media ===
