@@ -6,10 +6,10 @@
       discord =
         (final.callPackage (
           final.fetchFromGitHub {
-            owner = "ButterscotchV";
+            owner = "FlameFlag";
             repo = "nixpkgs";
-            rev = "discord-fhsenv";
-            hash = "sha256-FwgLg3uMRaOqUDtJTCklJGNep4RpHZ/hOAibNLujU0Y=";
+            rev = "flameflag/push-vmswpuqmvzpt";
+            hash = "sha256-3yen/J8OZp06riulNo6MU/KQYwlxwc+EAH/0GeYJJbs=";
           }
           + "/pkgs/applications/networking/instant-messengers/discord/default.nix"
         ) { }).discord;
