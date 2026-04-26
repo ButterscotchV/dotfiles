@@ -3,7 +3,7 @@
 {
   imports = [
     ../../overlays
-    ./hardware.nix
+    ./hardware-configuration.nix
     ../../modules/system
     ../../modules/user
   ];
