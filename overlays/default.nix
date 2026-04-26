@@ -3,5 +3,6 @@
 {
   imports = [
     ./discord.nix
+    ./openldap.nix
   ];
 }
