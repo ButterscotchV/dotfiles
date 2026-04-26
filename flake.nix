@@ -42,9 +42,12 @@
 
             home-manager.nixosModules.home-manager
             {
+              imports = [
+                ./hosts/lamb-laptop/users.nix
+              ];
+
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.butterscotch = import ./home/butterscotch/default.nix;
             }
 
             nixos-hardware.nixosModules.lenovo-ideapad-s145-15api
@@ -58,13 +61,13 @@
 
             home-manager.nixosModules.home-manager
             {
+              imports = [
+                ./hosts/lamb-desktop-2/users.nix
+              ];
+
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.butterscotch = import ./home/butterscotch/default.nix;
             }
-
-            # Add nixos-hardware module if your desktop hardware is supported
-            # For example: nixos-hardware.nixosModules.framework-13-7040-amd
           ];
         };
       };

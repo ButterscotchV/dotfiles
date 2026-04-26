@@ -12,8 +12,6 @@ in
   home.username = "butterscotch";
   home.homeDirectory = "/home/butterscotch";
 
-  home.stateVersion = "25.11";
-
-  # Let home Manager install and manage itself.
+  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
