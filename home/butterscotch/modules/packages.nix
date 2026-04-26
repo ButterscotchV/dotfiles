@@ -9,7 +9,6 @@
     zip
 
     # === Audio ===
-    easyeffects
     pwvucontrol
 
     # === Browser ===
@@ -29,6 +28,7 @@
     vlc
     spotify
     qbittorrent
+    ffmpeg
 
     # === Office ===
     libreoffice-qt
@@ -47,13 +47,11 @@
     gtk3
     gtk4
     nerd-fonts.fira-code
-    oh-my-zsh
 
     # === Development ===
     git-credential-manager
     github-desktop
     jq # JSON processor
-    nix-output-monitor # nom
     nixfmt
 
     # === IDE ===

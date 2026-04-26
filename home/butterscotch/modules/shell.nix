@@ -28,4 +28,7 @@
 
   programs.bash.enable = true;
   # programs.direnv.enable = true;
+
+  # nom
+  programs.nix-your-shell.nix-output-monitor.enable = true;
 }

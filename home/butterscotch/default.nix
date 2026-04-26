@@ -5,7 +5,6 @@ in
 {
   imports = [
     # ./ssh # Disabled: requires secrets/default.nix
-    ./shell.nix
     ./modules
   ];
 
