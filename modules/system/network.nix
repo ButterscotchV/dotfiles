@@ -1,9 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  # Network and hostname
+  # Network configuration
   networking = {
-    hostName = "lamb-laptop";
     networkmanager.enable = true;
     wireless.iwd.enable = true;
     networkmanager.wifi.backend = "iwd";

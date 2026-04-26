@@ -38,7 +38,7 @@
         lamb-laptop = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./configuration.nix
+            ./hosts/lamb-laptop
 
             home-manager.nixosModules.home-manager
             {
@@ -48,6 +48,23 @@
             }
 
             nixos-hardware.nixosModules.lenovo-ideapad-s145-15api
+          ];
+        };
+
+        lamb-desktop-2 = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/lamb-desktop-2
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.butterscotch = import ./home/butterscotch/default.nix;
+            }
+
+            # Add nixos-hardware module if your desktop hardware is supported
+            # For example: nixos-hardware.nixosModules.framework-13-7040-amd
           ];
         };
       };
