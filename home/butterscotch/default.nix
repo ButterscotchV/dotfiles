@@ -34,7 +34,7 @@
       credential = {
         helper = "manager";
         "https://github.com".username = "ButterscotchV";
-        credentialStore = "cache";
+        credentialStore = "gpg";
       };
     };
   };
