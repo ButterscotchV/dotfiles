@@ -45,6 +45,7 @@
     gtk4
     nerd-fonts.fira-code
     displaycal
+    kdePackages.kfind
 
     # === Development ===
     git-credential-manager

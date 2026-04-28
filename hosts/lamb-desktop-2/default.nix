@@ -4,6 +4,7 @@
   imports = [
     ../../overlays
     ./hardware-configuration.nix
+    ./storage.nix
     ../../modules/system
     ../../modules/user
   ];
