@@ -11,9 +11,6 @@
     # === Audio ===
     pwvucontrol
 
-    # === Browser ===
-    firefox
-
     # === Communication ===
     discord
     telegram-desktop
@@ -47,6 +44,7 @@
     gtk3
     gtk4
     nerd-fonts.fira-code
+    displaycal
 
     # === Development ===
     git-credential-manager

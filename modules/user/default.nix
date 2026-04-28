@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./slimevr
     ./steam.nix
   ];
 
@@ -21,8 +20,12 @@
     shell = pkgs.zsh;
   };
 
-  # No idea what this was for...
-  networking.firewall.allowedUDPPorts = [
-    35903
-  ];
+  # SlimeVR
+  networking = {
+    firewall.allowedTCPPorts = [ 21110 ];
+    firewall.allowedUDPPorts = [
+      6969
+      8266
+    ];
+  };
 }

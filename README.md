@@ -16,7 +16,7 @@ To deploy this configuration on a new machine:
 To format the project, use:
 
 ```bash
-nix fmt .
+nix fmt
 ```
 
 To check the configuration for errors, run:
@@ -32,29 +32,10 @@ nix flake check
 1. Generate a hardware configuration for the new host:
 
     ```bash
-    sudo nixos-generate-config --root /mnt > hardware/new-host/default.nix
+    sudo nixos-generate-config --root /mnt > hosts/new-host/default.nix
     ```
 
 2. Add the new host to the `nixosConfigurations` in `flake.nix`.
-
-### Secrets Management
-
-To manage secrets like SSH keys or API tokens, you can create a `secrets` folder in `home/butterscotch/`. This folder is ignored by git.
-
-Example `home/butterscotch/secrets/default.nix`:
-
-```nix
-{
-  # Example SSH key configuration
-  # ssh.main_key.private = "/home/butterscotch/.ssh/id_rsa";
-  # ssh.main_key.public = "/home/butterscotch/.ssh/id_rsa.pub";
-
-  # Example credential paths
-  # credentials.github_token = builtins.readFile ~/.config/github-token;
-}
-```
-
-Then, import it in your home-manager configuration. For production use, consider a more robust solution like [agenix](https://github.com/ryantm/agenix) or [sops-nix](https://github.com/Mic92/sops-nix).
 
 ### Package Pinning
 

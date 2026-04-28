@@ -19,7 +19,6 @@
 
   services.printing.enable = true;
 
-  # Security settings
   security = {
     rtkit.enable = true;
     polkit.enable = true;
