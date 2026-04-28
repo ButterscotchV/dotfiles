@@ -41,8 +41,6 @@
     bottles
 
     # === Desktop, shell, and appearance ===
-    gtk3
-    gtk4
     nerd-fonts.fira-code
     displaycal
     kdePackages.kfind

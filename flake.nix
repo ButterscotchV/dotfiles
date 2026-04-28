@@ -45,18 +45,15 @@
           inherit system;
           modules = [
             ./hosts/lamb-laptop
-
             home-manager.nixosModules.home-manager
             {
               imports = [
                 ./hosts/lamb-laptop/users.nix
               ];
-
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
             }
-
             nixos-hardware.nixosModules.lenovo-ideapad-s145-15api
           ];
         };
@@ -65,13 +62,11 @@
           inherit system;
           modules = [
             ./hosts/lamb-desktop-2
-
             home-manager.nixosModules.home-manager
             {
               imports = [
                 ./hosts/lamb-desktop-2/users.nix
               ];
-
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];

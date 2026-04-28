@@ -10,4 +10,7 @@
       proton-ge-bin
     ];
   };
+
+  # Linux game optimizations
+  programs.gamemode.enable = true;
 }

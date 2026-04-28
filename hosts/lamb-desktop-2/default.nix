@@ -7,6 +7,7 @@
     ./storage.nix
     ../../modules/system
     ../../modules/user
+    ../../modules/user/vr.nix
   ];
 
   # Allow unfree packages
