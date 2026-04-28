@@ -11,6 +11,8 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  # Enable ROCm/HIP support globally
+  nixpkgs.config.rocmSupport = true;
 
   # Hostname for this system
   networking.hostName = "lamb-desktop-2";
@@ -19,6 +21,16 @@
     enable = true;
     openFirewall = true;
     user = "butterscotch";
+  };
+
+  # Enable hardware acceleration
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+  hardware.amdgpu = {
+    initrd.enable = true;
+    opencl.enable = true;
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
