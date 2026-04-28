@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  pkgs-stable,
+  ...
+}:
 
 {
   services.wivrn = {
@@ -13,6 +18,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wayvr
+    pkgs-stable.wayvr
   ];
 }

@@ -7,6 +7,7 @@
     # i.e. nixos-24.11
     # Use `nix flake update` to update the flake to the latest revision of the chosen release channel.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
@@ -25,6 +26,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-stable,
       nixos-hardware,
       home-manager,
       plasma-manager,
@@ -36,6 +38,10 @@
         inherit system;
         config.allowUnfree = true;
       };
+      pkgs-stable = import nixpkgs-stable {
+        inherit system;
+        config.allowUnfree = true;
+      };
     in
     {
       formatter.${system} = pkgs.nixfmt-tree;
@@ -43,6 +49,7 @@
       nixosConfigurations = {
         lamb-laptop = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit pkgs-stable; };
           modules = [
             ./hosts/lamb-laptop
             home-manager.nixosModules.home-manager
@@ -53,6 +60,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+              home-manager.extraSpecialArgs = { inherit pkgs-stable; };
             }
             nixos-hardware.nixosModules.lenovo-ideapad-s145-15api
           ];
@@ -60,6 +68,7 @@
 
         lamb-desktop-2 = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit pkgs-stable; };
           modules = [
             ./hosts/lamb-desktop-2
             home-manager.nixosModules.home-manager
@@ -70,6 +79,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+              home-manager.extraSpecialArgs = { inherit pkgs-stable; };
             }
           ];
         };

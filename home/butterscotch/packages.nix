@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  pkgs-stable,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -47,7 +52,12 @@
 
     # === Development ===
     git-credential-manager
-    github-desktop
+    (pkgs-stable.github-desktop.overrideAttrs (oldAttrs: {
+      postFixup = ''
+        wrapProgram "$out/bin/github-desktop" \
+          --add-flags "--ozone-platform=x11"
+      '';
+    }))
     jq # JSON processor
     nixfmt
 
