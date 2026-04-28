@@ -5,5 +5,6 @@
     vim
     wget
     git
+    dos2unix
   ];
 }
