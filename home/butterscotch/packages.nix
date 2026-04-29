@@ -59,6 +59,7 @@
       '';
     }))
     jq # JSON processor
+    nix-output-monitor # nom
     nixfmt
 
     # === IDE ===
