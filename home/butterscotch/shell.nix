@@ -20,6 +20,8 @@
         "python"
         "man"
         "gradle"
+        "docker"
+        "docker-compose"
       ];
     };
   };
