@@ -8,6 +8,7 @@
     ../../modules/system
     ../../modules/user
     ../../modules/user/vr.nix
+    ../../modules/user/llama-cpp.nix
   ];
 
   # Allow unfree packages

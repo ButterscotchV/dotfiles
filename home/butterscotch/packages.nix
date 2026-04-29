@@ -31,6 +31,7 @@
     spotify
     qbittorrent
     ffmpeg
+    pkgsRocm.blender
 
     # === Office ===
     libreoffice-qt
