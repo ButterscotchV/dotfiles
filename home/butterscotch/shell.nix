@@ -11,9 +11,7 @@
     enable = true;
     autocd = true;
     dotDir = "${config.xdg.configHome}/zsh";
-    autosuggestion = {
-      enable = true;
-    };
+    autosuggestion.enable = true;
     enableCompletion = true;
     oh-my-zsh = {
       enable = true;
@@ -21,13 +19,13 @@
         "git"
         "python"
         "man"
+        "gradle"
       ];
     };
-    plugins = [ ];
   };
 
   programs.bash.enable = true;
-  # programs.direnv.enable = true;
+  programs.direnv.enable = true;
 
   # nom
   programs.nix-your-shell.nix-output-monitor.enable = true;

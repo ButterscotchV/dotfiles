@@ -45,4 +45,11 @@
       turbo = "auto";
     };
   };
+
+  # Gaming mouse configuration
+  services.ratbagd.enable = true;
+  environment.systemPackages = with pkgs; [
+    # solaar # Very confusing
+    piper
+  ];
 }
