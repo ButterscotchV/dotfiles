@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./udev.nix
     ./steam.nix
   ];
 
@@ -21,7 +22,9 @@
   };
 
   # SlimeVR
-  services.udev.extraRules = (builtins.readFile ./69-slimevr-devices.rules);
+  services.udev.extraFiles = [
+    ./69-slimevr-devices.rules
+  ];
   networking = {
     firewall.allowedTCPPorts = [ 21110 ];
     firewall.allowedUDPPorts = [
