@@ -81,6 +81,14 @@
               home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
               home-manager.extraSpecialArgs = { inherit pkgs-stable; };
             }
+            nixos-hardware.nixosModules.common-cpu-amd
+            nixos-hardware.nixosModules.common-cpu-amd-pstate
+            nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
+            nixos-hardware.nixosModules.common-gpu-amd
+            nixos-hardware.nixosModules.common-gpu-intel-disable
+            nixos-hardware.nixosModules.common-gpu-nvidia-disable
+            nixos-hardware.nixosModules.common-pc
+            nixos-hardware.nixosModules.common-pc-ssd
           ];
         };
       };
