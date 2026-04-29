@@ -91,6 +91,10 @@ in
     port = 8080;
     package = llama-cpp-custom;
     openFirewall = true;
+    extraFlags = [
+      "--models-max"
+      "1"
+    ];
     modelsPreset = {
       "unsloth/Qwen3.6-27B-GGUF:Q4_K_XL" = (
         defaultQwen36Config
