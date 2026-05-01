@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
-    vim
-    wget
-    git
     dos2unix
+    git
+    wget
+    vim
   ];
 }

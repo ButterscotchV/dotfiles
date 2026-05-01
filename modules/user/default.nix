@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -11,12 +11,12 @@
     isNormalUser = true;
     description = "Butterscotch!";
     extraGroups = [
-      "networkmanager"
-      "wheel"
       "audio"
-      "video"
-      "docker"
       "dialout"
+      "docker"
+      "networkmanager"
+      "video"
+      "wheel"
     ];
     shell = pkgs.zsh;
   };

@@ -85,6 +85,7 @@ let
   );
 in
 {
+  # Context length can be specified with `c = len;`
   services.llama-cpp = {
     enable = true;
     host = "0.0.0.0";
@@ -96,69 +97,33 @@ in
       "1"
     ];
     modelsPreset = {
-      "unsloth/Qwen3.6-27B-GGUF:Q4_K_XL" = (
-        defaultQwen36Config
-        // {
-          hf-repo = "unsloth/Qwen3.6-27B-GGUF:UD-Q4_K_XL";
-          # c = "128000";
-        }
-      );
-      "unsloth/Qwen3.6-27B-GGUF:Q3_K_XL" = (
-        defaultQwen36Config
-        // {
-          hf-repo = "unsloth/Qwen3.6-27B-GGUF:UD-Q3_K_XL";
-          # c = "128000";
-        }
-      );
-      "unsloth/Qwen3.6-35B-A3B-GGUF:Q4_K_M" = (
-        defaultQwen36Config
-        // {
-          hf-repo = "unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_M";
-          # c = "65536";
-        }
-      );
-      "unsloth/Qwen3.6-35B-A3B-GGUF:Q3_K_M" = (
-        defaultQwen36Config
-        // {
-          hf-repo = "unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q3_K_M";
-          # c = "65536";
-        }
-      );
-      "unsloth/gemma-4-31B-it-GGUF:Q4_K_XL" = (
-        defaultGemma4Config
-        // {
-          hf-repo = "unsloth/gemma-4-31B-it-GGUF:UD-Q4_K_XL";
-          # c = "65536";
-        }
-      );
-      "unsloth/gemma-4-31B-it-GGUF:IQ3_XXS" = (
-        defaultGemma4Config
-        // {
-          hf-repo = "unsloth/gemma-4-31B-it-GGUF:UD-IQ3_XXS";
-          # c = "65536";
-        }
-      );
-      "unsloth/gemma-4-26B-A4B-it-GGUF:Q4_K_M" = (
-        defaultGemma4Config
-        // {
-          hf-repo = "unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q4_K_M";
-          # c = "65536";
-        }
-      );
-      "unsloth/gemma-4-E4B-it-GGUF:Q8_K_XL" = (
-        defaultGemma4Config
-        // {
-          hf-repo = "unsloth/gemma-4-E4B-it-GGUF:UD-Q8_K_XL";
-          # c = "65536";
-        }
-      );
-      "unsloth/gemma-4-E4B-it-GGUF:Q6_K_XL" = (
-        defaultGemma4Config
-        // {
-          hf-repo = "unsloth/gemma-4-E4B-it-GGUF:UD-Q6_K_XL";
-          # c = "65536";
-        }
-      );
+      "unsloth/Qwen3.6-27B-GGUF:Q4_K_XL" = defaultQwen36Config // {
+        hf-repo = "unsloth/Qwen3.6-27B-GGUF:UD-Q4_K_XL";
+      };
+      "unsloth/Qwen3.6-27B-GGUF:Q3_K_XL" = defaultQwen36Config // {
+        hf-repo = "unsloth/Qwen3.6-27B-GGUF:UD-Q3_K_XL";
+      };
+      "unsloth/Qwen3.6-35B-A3B-GGUF:Q4_K_M" = defaultQwen36Config // {
+        hf-repo = "unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_M";
+      };
+      "unsloth/Qwen3.6-35B-A3B-GGUF:Q3_K_M" = defaultQwen36Config // {
+        hf-repo = "unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q3_K_M";
+      };
+      "unsloth/gemma-4-31B-it-GGUF:Q4_K_XL" = defaultGemma4Config // {
+        hf-repo = "unsloth/gemma-4-31B-it-GGUF:UD-Q4_K_XL";
+      };
+      "unsloth/gemma-4-31B-it-GGUF:IQ3_XXS" = defaultGemma4Config // {
+        hf-repo = "unsloth/gemma-4-31B-it-GGUF:UD-IQ3_XXS";
+      };
+      "unsloth/gemma-4-26B-A4B-it-GGUF:Q4_K_M" = defaultGemma4Config // {
+        hf-repo = "unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q4_K_M";
+      };
+      "unsloth/gemma-4-E4B-it-GGUF:Q8_K_XL" = defaultGemma4Config // {
+        hf-repo = "unsloth/gemma-4-E4B-it-GGUF:UD-Q8_K_XL";
+      };
+      "unsloth/gemma-4-E4B-it-GGUF:Q6_K_XL" = defaultGemma4Config // {
+        hf-repo = "unsloth/gemma-4-E4B-it-GGUF:UD-Q6_K_XL";
+      };
     };
   };
 

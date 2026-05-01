@@ -1,9 +1,7 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  # Enable the X11 server
-  services.xserver.enable = false;
-  # or enable XWayland
+  # Enable XWayland for X11 compatibility
   programs.xwayland.enable = true;
 
   # Set up our display manager

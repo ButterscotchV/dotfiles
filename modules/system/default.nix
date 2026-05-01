@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -7,7 +7,6 @@
     ./boot.nix
     ./desktop.nix
     ./locale.nix
-    ./packages.nix
     ./network.nix
     ./nix-config.nix
     ./packages.nix
@@ -49,7 +48,6 @@
   # Gaming mouse configuration
   services.ratbagd.enable = true;
   environment.systemPackages = with pkgs; [
-    # solaar # Very confusing
     piper
   ];
 }

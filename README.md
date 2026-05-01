@@ -1,6 +1,6 @@
 # NixOS Dotfiles
 
-A flake-based NixOS and home-manager configuration for a development-focused AMD laptop running KDE Plasma 6.
+A flake-based NixOS and home-manager configuration for AMD systems running KDE Plasma 6.
 
 ## Installation
 
@@ -25,30 +25,14 @@ To check the configuration for errors, run:
 nix flake check
 ```
 
-## Configuration
-
 ### Adding a New Host
 
 1. Generate a hardware configuration for the new host:
 
     ```bash
-    sudo nixos-generate-config --root /mnt > hosts/new-host/default.nix
+    sudo nixos-generate-config --root /mnt > hosts/new-host/hardware-configuration.nix
     ```
 
-2. Add the new host to the `nixosConfigurations` in `flake.nix`.
+2. Create a `default.nix` and `users.nix` for the new host in `hosts/new-host/`.
 
-### Package Pinning
-
-To pin a package to a specific version, you can override its attributes in your configuration.
-
-Example:
-
-```nix
-pkgs.somepackage.overrideAttrs (old: {
-  version = "1.2.3";
-  src = pkgs.fetchurl {
-    url = "https://example.com/package-1.2.3.tar.gz";
-    sha256 = "...";
-  };
-})
-```
+3. Add the new host to the `nixosConfigurations` in `flake.nix`.
