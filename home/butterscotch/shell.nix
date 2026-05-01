@@ -28,7 +28,7 @@
 
   programs.bash.enable = true;
 
-  environment.shellAliases = {
+  home.shellAliases = {
     idea-bg = "nohup idea . >/dev/null 2>&1 &";
     nixos-switch = "nixos-rebuild switch --sudo |& nom";
     nixos-boot = "nixos-rebuild boot --sudo |& nom";
