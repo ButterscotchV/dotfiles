@@ -19,11 +19,7 @@
   # Hostname for this system
   networking.hostName = "lamb-desktop-2";
 
-  services.plex = {
-    enable = true;
-    openFirewall = true;
-    user = "butterscotch";
-  };
+  hardware.enableAllFirmware = true;
 
   # Enable hardware acceleration
   hardware.graphics = {
@@ -33,6 +29,12 @@
   hardware.amdgpu = {
     initrd.enable = true;
     opencl.enable = true;
+  };
+
+  services.plex = {
+    enable = true;
+    openFirewall = true;
+    user = "butterscotch";
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
