@@ -10,7 +10,6 @@
     vrcx
     pkgs-stable.wayvr
     insync
-    insync-dolphin
   ];
 
   programs.git.signing = {
