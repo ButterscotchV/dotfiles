@@ -10,12 +10,7 @@
     vrcx
     pkgs-stable.wayvr
     insync
-    (import ../../modules/user/insync-dolphin.nix {
-      lib = pkgs.lib;
-      stdenv = pkgs.stdenv;
-      fetchurl = pkgs.fetchurl;
-      dpkg = pkgs.dpkg;
-    })
+    insync-dolphin
   ];
 
   programs.git.signing = {

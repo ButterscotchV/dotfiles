@@ -1,13 +1,16 @@
 { ... }:
 
 {
-  # Workaround for openldap build failures on i686
-  # See: https://github.com/NixOS/nixpkgs/issues/514113
   nixpkgs.overlays = [
     (_: prev: {
+      # Workaround for openldap build failures on i686
+      # See: https://github.com/NixOS/nixpkgs/issues/514113
       openldap = prev.openldap.overrideAttrs {
         doCheck = !prev.stdenv.hostPlatform.isi686;
       };
+    })
+    (final: prev: {
+      insync-dolphin = prev.callPackage ./insync-dolphin.nix { };
     })
   ];
 }
