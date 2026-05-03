@@ -1,8 +1,14 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  pkgs-stable,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
     vrcx
+    pkgs-stable.wayvr
   ];
 
   programs.git.signing = {
