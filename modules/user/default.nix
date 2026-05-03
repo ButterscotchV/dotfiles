@@ -4,7 +4,6 @@
   imports = [
     ./udev.nix
     ./steam.nix
-    ./drawing-tablet.nix
   ];
 
   # User configuration
