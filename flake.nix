@@ -20,6 +20,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
   };
 
   outputs =
@@ -30,6 +32,7 @@
       nixos-hardware,
       home-manager,
       plasma-manager,
+      nixpkgs-xr,
       ...
     }@inputs:
     let
@@ -49,8 +52,12 @@
       nixosConfigurations = {
         lamb-laptop = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit pkgs-stable; };
+          specialArgs = {
+            inherit pkgs-stable;
+            inherit nixpkgs-xr;
+          };
           modules = [
+            ./overlays/xr-pkgs.nix
             ./hosts/lamb-laptop
             home-manager.nixosModules.home-manager
             {
@@ -68,8 +75,12 @@
 
         lamb-desktop-2 = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit pkgs-stable; };
+          specialArgs = {
+            inherit pkgs-stable;
+            inherit nixpkgs-xr;
+          };
           modules = [
+            ./overlays/xr-pkgs.nix
             ./hosts/lamb-desktop-2
             home-manager.nixosModules.home-manager
             {
