@@ -5,6 +5,8 @@
   dpkg,
 }:
 
+# idk why this doesn't work... maybe Dolphin doesn't like it?
+# based on https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/in/insync-nautilus/package.nix
 stdenv.mkDerivation (finalAttrs: {
   pname = "insync-dolphin";
   version = "3.9.8.60034";
