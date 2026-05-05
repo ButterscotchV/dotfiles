@@ -13,8 +13,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  # Enable ROCm/HIP support globally
-  nixpkgs.config.rocmSupport = true;
 
   # Hostname for this system
   networking.hostName = "lamb-desktop-2";
