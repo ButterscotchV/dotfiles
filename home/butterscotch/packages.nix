@@ -81,5 +81,8 @@
     })
     slimevr
     moonlight-qt
+
+    # === Networking ===
+    proton-vpn
   ];
 }
