@@ -9,11 +9,6 @@
         doCheck = !prev.stdenv.hostPlatform.isi686;
       };
       insync-dolphin = prev.callPackage ./insync-dolphin.nix { };
-      rocmPackages = prev.rocmPackages.overrideScope (
-        fs: ps: {
-          clr = ps.clr.override { localGpuTargets = [ "gfx1100" ]; };
-        }
-      );
     })
   ];
 }

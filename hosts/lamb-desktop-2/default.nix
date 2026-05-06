@@ -3,6 +3,7 @@
 {
   imports = [
     ../../overlays
+    ../../overlays/rocm-7900xtx.nix
     ./hardware-configuration.nix
     ./storage.nix
     ../../modules/system
