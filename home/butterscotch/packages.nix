@@ -33,6 +33,7 @@
     ffmpeg
     pkgsRocm.blender
     kdePackages.audiocd-kio
+    kdePackages.k3b
 
     # === Office ===
     libreoffice-qt
