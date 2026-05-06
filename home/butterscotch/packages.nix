@@ -32,8 +32,10 @@
     qbittorrent
     ffmpeg
     pkgsRocm.blender
+
+    # === CD Ripping ===
     kdePackages.audiocd-kio
-    kdePackages.k3b
+    cyanrip
 
     # === Office ===
     libreoffice-qt
