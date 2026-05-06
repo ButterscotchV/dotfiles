@@ -32,6 +32,7 @@
     qbittorrent
     ffmpeg
     pkgsRocm.blender
+    kdePackages.audiocd-kio
 
     # === Office ===
     libreoffice-qt
