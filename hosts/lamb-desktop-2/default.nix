@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -35,6 +35,7 @@
     openFirewall = true;
     user = "butterscotch";
   };
+  systemd.services.plex.serviceConfig.ProtectHome = lib.mkForce false;
 
   environment.systemPackages = with pkgs; [
     insync-dolphin
