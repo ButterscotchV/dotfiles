@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../modules/package-sources.nix
     ./packages.nix
     ./shell.nix
     ./plasma.nix

@@ -9,19 +9,20 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
+    erosanix = {
+      url = "github:emmanuelrosa/erosanix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -33,30 +34,22 @@
       home-manager,
       plasma-manager,
       nixpkgs-xr,
+      erosanix,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      pkgs-stable = import nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      };
     in
     {
-      formatter.${system} = pkgs.nixfmt-tree;
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
 
       nixosConfigurations = {
         lamb-laptop = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit pkgs-stable;
-            inherit nixpkgs-xr;
+            inherit inputs;
           };
-          modules = [
+          modules = with nixos-hardware.nixosModules; [
             ./overlays/xr-pkgs.nix
             ./hosts/lamb-laptop
             home-manager.nixosModules.home-manager
@@ -64,22 +57,23 @@
               imports = [
                 ./hosts/lamb-laptop/users.nix
               ];
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
-              home-manager.extraSpecialArgs = { inherit pkgs-stable; };
+              home-manager = {
+                extraSpecialArgs = { inherit inputs; };
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+              };
             }
-            nixos-hardware.nixosModules.lenovo-ideapad-s145-15api
+            lenovo-ideapad-s145-15api
           ];
         };
 
         lamb-desktop-2 = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit pkgs-stable;
-            inherit nixpkgs-xr;
+            inherit inputs;
           };
-          modules = [
+          modules = with nixos-hardware.nixosModules; [
             ./overlays/xr-pkgs.nix
             ./hosts/lamb-desktop-2
             home-manager.nixosModules.home-manager
@@ -87,19 +81,21 @@
               imports = [
                 ./hosts/lamb-desktop-2/users.nix
               ];
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
-              home-manager.extraSpecialArgs = { inherit pkgs-stable; };
+              home-manager = {
+                extraSpecialArgs = { inherit inputs; };
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+              };
             }
-            nixos-hardware.nixosModules.common-cpu-amd
-            nixos-hardware.nixosModules.common-cpu-amd-pstate
-            nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
-            nixos-hardware.nixosModules.common-gpu-amd
-            nixos-hardware.nixosModules.common-gpu-intel-disable
-            nixos-hardware.nixosModules.common-gpu-nvidia-disable
-            nixos-hardware.nixosModules.common-pc
-            nixos-hardware.nixosModules.common-pc-ssd
+            common-cpu-amd
+            common-cpu-amd-pstate
+            common-cpu-amd-raphael-igpu
+            common-gpu-amd
+            common-gpu-intel-disable
+            common-gpu-nvidia-disable
+            common-pc
+            common-pc-ssd
           ];
         };
       };

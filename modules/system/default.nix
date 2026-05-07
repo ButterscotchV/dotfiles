@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../package-sources.nix
     ./audio.nix
     ./bluetooth.nix
     ./boot.nix

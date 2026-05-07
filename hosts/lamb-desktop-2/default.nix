@@ -23,8 +23,6 @@
   # Hostname for this system
   networking.hostName = "lamb-desktop-2";
 
-  hardware.enableAllFirmware = true;
-
   # Enable hardware acceleration
   hardware.graphics = {
     enable = true;

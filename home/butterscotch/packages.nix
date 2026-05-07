@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  pkgs-stable,
+  pkgsStable,
   ...
 }:
 
@@ -61,7 +61,7 @@
 
     # === Development ===
     git-credential-manager
-    (pkgs-stable.github-desktop.overrideAttrs (oldAttrs: {
+    (pkgsStable.github-desktop.overrideAttrs (oldAttrs: {
       postFixup = ''
         wrapProgram "$out/bin/github-desktop" \
           --add-flags "--ozone-platform=x11"

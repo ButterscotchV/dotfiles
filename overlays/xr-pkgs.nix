@@ -1,9 +1,9 @@
-{ pkgs, nixpkgs-xr, ... }:
+{ pkgs, pkgsXr, ... }:
 
 {
   nixpkgs.overlays = [
     (final: prev: {
-      proton-ge-rtsp-bin = nixpkgs-xr.packages.${pkgs.stdenv.hostPlatform.system}.proton-ge-rtsp-bin;
+      proton-ge-rtsp-bin = pkgsXr.packages.${pkgs.stdenv.hostPlatform.system}.proton-ge-rtsp-bin;
     })
   ];
 }
