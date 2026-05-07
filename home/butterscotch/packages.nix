@@ -19,7 +19,9 @@
     # === Communication ===
     discord
     telegram-desktop
-    stoat-desktop
+    (stoat-desktop.override {
+      electron_38 = electron;
+    })
 
     # === Media ===
     krita
@@ -28,6 +30,7 @@
         QT_STYLE_OVERRIDE = "default";
       };
     })
+    plexamp
     vlc
     spotify
     qbittorrent
@@ -67,8 +70,6 @@
     jq # JSON processor
     nix-output-monitor # nom
     nixfmt
-
-    # === IDE ===
     jetbrains.idea
 
     # === Gaming ===
