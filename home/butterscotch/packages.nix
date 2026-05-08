@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgsStable,
+  pkgsLocal,
   ...
 }:
 
@@ -36,6 +37,7 @@
     qbittorrent
     ffmpeg
     pkgsRocm.blender
+    pkgsLocal.rebelle
 
     # === CD Ripping ===
     kdePackages.audiocd-kio
@@ -53,6 +55,8 @@
 
     # === Runtimes ===
     bottles
+    wineWow64Packages.staging
+    winetricks
 
     # === Desktop, shell, and appearance ===
     nerd-fonts.fira-code

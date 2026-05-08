@@ -22,6 +22,7 @@
     erosanix = {
       url = "github:emmanuelrosa/erosanix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.url = "github:NixOS/flake-compat";
     };
   };
 

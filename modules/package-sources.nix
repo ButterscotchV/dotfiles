@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgsErosanix,
   config,
   inputs,
   ...
@@ -12,6 +13,9 @@
       config.allowUnfree = true;
     };
     pkgsXr = inputs.nixpkgs-xr;
-    pkgsErosanix = inputs.erosanix;
+    pkgsLocal = import ./pkgs {
+      inherit pkgs;
+      pkgsErosanix = inputs.erosanix.lib.x86_64-linux;
+    };
   };
 }
