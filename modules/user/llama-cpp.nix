@@ -18,12 +18,12 @@ let
       rocmGpuTargets = [ "gfx1100" ];
     }).overrideAttrs
       (oldAttrs: rec {
-        version = "9062";
+        version = "9095";
         src = pkgs.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
-          rev = "093be624cc8cbee1c7c2bb4ec72dc125f1291c87";
-          hash = "sha256-4D8OhjwONuusugxXwQibYHqp4fLuwZ+1tUYM+hEhYPs=";
+          rev = "1e5ad35d560b90a8ac447d149c8f8447ae1fcaa0";
+          hash = "sha256-NmvCBziExuMiKUIdpsK43uKo3OeY8oPujk6yqipg688=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -33,7 +33,7 @@ let
         buildInputs = oldAttrs.buildInputs ++ [
           pkgs.rocmPackages.rocwmma
         ];
-        npmDepsHash = "sha256-k62LIbyY2DXvs7XXbX0lNPiYxuYzeJUyQtS4eA+68f8=";
+        npmDepsHash = "sha256-cV3noOyKmst9vfxyvkCNhihPgwfVGhmPPT4UMloeWZM=";
         cmakeFlags = (
           # Filter out existing GGML_NATIVE flag
           (lib.filter (x: !(lib.hasInfix "GGML_NATIVE" x)) (oldAttrs.cmakeFlags or [ ]))
