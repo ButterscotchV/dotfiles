@@ -63,6 +63,7 @@
     nerd-fonts.fira-code
     displaycal
     kdePackages.kfind
+    kdePackages.plasma-sdk
 
     # === Development ===
     git-credential-manager

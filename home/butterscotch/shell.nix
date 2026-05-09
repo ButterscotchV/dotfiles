@@ -30,7 +30,7 @@
 
   home.shellAliases = {
     idea-bg = "nohup idea . >/dev/null 2>&1 &";
-    nixos-switch = "nixos-rebuild switch --sudo |& nom";
-    nixos-boot = "nixos-rebuild boot --sudo |& nom";
+    nixos-switch = "nixos-rebuild switch --sudo";
+    nixos-boot = "nixos-rebuild boot --sudo";
   };
 }
