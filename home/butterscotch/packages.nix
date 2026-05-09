@@ -88,6 +88,8 @@
     })
     slimevr
     moonlight-qt
+    r2modman
+    owmods-gui
 
     # === Networking ===
     proton-vpn
