@@ -38,6 +38,7 @@
     ffmpeg
     pkgsRocm.blender
     pkgsLocal.rebelle
+    affinity-v3
 
     # === CD Ripping ===
     kdePackages.audiocd-kio

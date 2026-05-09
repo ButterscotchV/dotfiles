@@ -24,6 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.url = "github:NixOS/flake-compat";
     };
+    affinity-nix = {
+      url = "github:mrshmllow/affinity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -36,6 +40,7 @@
       plasma-manager,
       nixpkgs-xr,
       erosanix,
+      affinity-nix,
       ...
     }@inputs:
     let

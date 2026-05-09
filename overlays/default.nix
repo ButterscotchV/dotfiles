@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   nixpkgs.overlays = [
@@ -28,5 +28,6 @@
             };
       };
     })
+    inputs.affinity-nix.overlays.default
   ];
 }
