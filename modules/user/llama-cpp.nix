@@ -63,7 +63,6 @@ let
     checkpoint-every-n-tokens = "8192";
     fit = "on";
     chat-template-kwargs = "{\"preserve_thinking\":true}";
-    no-mmproj = "enabled";
     sleep-idle-seconds = "300";
   };
   defaultQwen36Config = (
