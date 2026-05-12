@@ -46,6 +46,7 @@
     darktable
     obs-studio
     pkgsLocal.pinga
+    pkgsLocal.pingo
     kdePackages.kdenlive
 
     # === CD Ripping ===
