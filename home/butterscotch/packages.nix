@@ -42,6 +42,7 @@
     gimp
     darktable
     obs-studio
+    pkgsLocal.pinga
 
     # === CD Ripping ===
     kdePackages.audiocd-kio

@@ -8,17 +8,18 @@
   makeDesktopIcon,
   copyDesktopItems,
   copyDesktopIcons,
+  unzip,
 }:
 
 mkWindowsApp rec {
   inherit wine;
 
-  pname = "rebelle";
-  version = "7.2.8";
+  pname = "pinga";
+  version = "0.65.3";
 
   src = fetchurl {
-    url = "https://escapemotions1.b-cdn.net/products/rebelle/update/downloads/Rebelle_v${version}_Windows_64bit.exe";
-    sha256 = "sha256-hfuhaHZhITNWpurAhVOREE/EXZAzSLLHLK6P61BCT6c=";
+    url = "https://css-ig.net/bin/pinga-win64.zip";
+    sha256 = "sha256-Tnqn7GSbgQjD8OuJ0GdQPIHSjMON41aoHrw/8b0Alck=";
   };
 
   # By default, when a Wine prefix is first created Wine will produce a warning prompt if Mono is not installed.
@@ -34,7 +35,7 @@ mkWindowsApp rec {
   # To figure out what needs to be persisted, take at look at $(dirname $WINEPREFIX)/upper,
   # while the app is running.
   fileMap = {
-    "$HOME/.config/${pname}" = "drive_c/users/$USER/AppData/Local/Escape Motions/Rebelle 7";
+    "$HOME/.config/pinga.ini" = "drive_c/users/$USER/AppData/Local/pinga.ini";
   };
 
   nativeBuildInputs = [
@@ -50,7 +51,11 @@ mkWindowsApp rec {
   # WINEPREFIX, WINEARCH, AND WINEDLLOVERRIDES are set
   # and wine, winetricks, and cabextract are in the environment.
   winAppInstall = ''
-    wine ${src} /VERYSILENT /SUPPRESSMSGBOXES
+    d="$WINEPREFIX/drive_c"
+
+    ${unzip}/bin/unzip ${src} -d "$d"
+    wine "$d/pinga.exe" /VERYSILENT /SUPPRESSMSGBOXES
+    rm "$d/pinga.exe"
   '';
 
   # This code runs before winAppRun, but only for the first instance.
@@ -66,8 +71,7 @@ mkWindowsApp rec {
   # Command line arguments are in $ARGS, not $@
   # DO NOT BLOCK. For example, don't run: wineserver -w
   winAppRun = ''
-    export WINEDLLOVERRIDES="wintab32=n,b;$WINEDLLOVERRIDES"
-    wine "$WINEPREFIX/drive_c/Program Files/Rebelle 7/Rebelle 7.exe" "$ARGS"
+    wine "$WINEPREFIX/drive_c/Program Files/pinga/pinga.exe" "$ARGS"
   '';
 
   # This code will run after winAppRun, but only for the first instance.
@@ -92,20 +96,20 @@ mkWindowsApp rec {
       name = pname;
       exec = pname;
       icon = pname;
-      desktopName = "Rebelle";
-      genericName = "Digital Painting";
+      desktopName = "pinga";
+      genericName = "Image Optimizer";
       categories = [ "Graphics" ];
     })
   ];
 
   desktopIcon = makeDesktopIcon {
     name = pname;
-    src = ./Rebelle_7.png;
+    src = ./Pinga.png;
   };
 
   meta = with lib; {
-    description = "Real media paint software for digital painting, with simulation of real-world color mixing, blending, wet-diffusion and drying.";
-    homepage = "https://www.escapemotions.com/products/rebelle";
+    description = "pinga is an easy to use GUI, experimental image optimizer (PNG, JPEG, APNG) designed to be used for web context.";
+    homepage = "https://css-ig.net/pinga";
     license = licenses.unfree;
     maintainers = with maintainers; [ ];
     platforms = [ "x86_64-linux" ];
