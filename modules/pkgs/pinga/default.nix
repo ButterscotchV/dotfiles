@@ -3,7 +3,7 @@
   lib,
   mkWindowsApp,
   wine,
-  fetchurl,
+  fetchzip,
   makeDesktopItem,
   makeDesktopIcon,
   copyDesktopItems,
@@ -17,9 +17,9 @@ mkWindowsApp rec {
   pname = "pinga";
   version = "0.65.3";
 
-  src = fetchurl {
+  src = fetchzip {
     url = "https://css-ig.net/bin/pinga-win64.zip";
-    sha256 = "sha256-Tnqn7GSbgQjD8OuJ0GdQPIHSjMON41aoHrw/8b0Alck=";
+    sha256 = "sha256-Hos+/kuU3rWKdbV21HMt5cBBzwxSaj91iPc8ugeyBIw=";
   };
 
   # By default, when a Wine prefix is first created Wine will produce a warning prompt if Mono is not installed.
@@ -51,11 +51,7 @@ mkWindowsApp rec {
   # WINEPREFIX, WINEARCH, AND WINEDLLOVERRIDES are set
   # and wine, winetricks, and cabextract are in the environment.
   winAppInstall = ''
-    d="$WINEPREFIX/drive_c"
-
-    ${unzip}/bin/unzip ${src} -d "$d"
-    wine "$d/pinga.exe" /VERYSILENT /SUPPRESSMSGBOXES
-    rm "$d/pinga.exe"
+    wine "${src}/pinga.exe" /VERYSILENT /SUPPRESSMSGBOXES
   '';
 
   # This code runs before winAppRun, but only for the first instance.

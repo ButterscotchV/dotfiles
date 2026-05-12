@@ -4,8 +4,7 @@
   mkDerivation,
   runtimeShell,
   wine,
-  fetchurl,
-  unzip,
+  fetchzip,
 }:
 
 mkDerivation rec {
@@ -14,9 +13,9 @@ mkDerivation rec {
   pname = "pingo";
   version = "1.25.41";
 
-  src = fetchurl {
+  src = fetchzip {
     url = "https://css-ig.net/bin/pingo-win64.zip";
-    sha256 = "sha256-USK06A+shvkFdpXrVE0pOZPyIv8Uqk98hlPoSkuDOag=";
+    sha256 = "sha256-8my1qTMhjOLRJ29Kg8f4+4cxGLjMubZ/7d1/uzOfHLI=";
   };
 
   nativeBuildInputs = [
@@ -36,11 +35,11 @@ mkDerivation rec {
     export WINEARCH=win64
     export WINEPREFIX="''${XDG_DATA_HOME:-"''${HOME}/.local/share"}/pingo"
     export WINEDLLOVERRIDES="mscoree=" # disable mono
-    if [ ! -d "$WINEPREFIX" ] ; then
+    if [ ! -d "$WINEPREFIX" ] || [ ! "$(readlink "$WINEPREFIX/pingo.exe")" -ef "${src}/pingo.exe" ] ; then
       mkdir -p "$WINEPREFIX"
-      unzip ${src} -d "$WINEPREFIX/drive_c"
+      ln -sf "${src}/pingo.exe" "$WINEPREFIX/pingo.exe"
     fi
-    wine "$WINEPREFIX/drive_c/pingo.exe" $@
+    wine "$WINEPREFIX/pingo.exe" $@
     EOF
     chmod +x $out/bin/pingo
 

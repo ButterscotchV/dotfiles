@@ -66,7 +66,7 @@ mkWindowsApp rec {
   # Command line arguments are in $ARGS, not $@
   # DO NOT BLOCK. For example, don't run: wineserver -w
   winAppRun = ''
-    export WINEDLLOVERRIDES="wintab32=n,b;$WINEDLLOVERRIDES"
+    export WINEDLLOVERRIDES="wintab32=n,b"
     wine "$WINEPREFIX/drive_c/Program Files/Rebelle 7/Rebelle 7.exe" "$ARGS"
   '';
 
@@ -92,7 +92,7 @@ mkWindowsApp rec {
       name = pname;
       exec = pname;
       icon = pname;
-      desktopName = "Rebelle";
+      desktopName = "Rebelle 7";
       genericName = "Digital Painting";
       categories = [ "Graphics" ];
     })
