@@ -39,6 +39,9 @@
     pkgsRocm.blender
     pkgsLocal.rebelle
     affinity-v3
+    gimp
+    darktable
+    obs-studio
 
     # === CD Ripping ===
     kdePackages.audiocd-kio
