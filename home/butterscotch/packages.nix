@@ -16,6 +16,9 @@
 
     # === Audio ===
     pwvucontrol
+    audacity
+    kdePackages.kwave
+    kid3-kde
 
     # === Communication ===
     discord
@@ -43,6 +46,7 @@
     darktable
     obs-studio
     pkgsLocal.pinga
+    kdePackages.kdenlive
 
     # === CD Ripping ===
     kdePackages.audiocd-kio
