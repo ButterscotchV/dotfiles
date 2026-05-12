@@ -49,6 +49,8 @@
     hunspell # For LibreOffice
     hyphenDicts.en_US # For LibreOffice
     onlyoffice-desktopeditors
+    kdePackages.skanpage
+    kdePackages.skanlite
 
     # === Security ===
     bitwarden-desktop
