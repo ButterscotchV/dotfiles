@@ -95,6 +95,11 @@ mkWindowsApp rec {
       desktopName = "pinga";
       genericName = "Image Optimizer";
       categories = [ "Graphics" ];
+      mimeTypes = [
+        "image/jpeg"
+        "image/png"
+        "image/apng"
+      ];
     })
   ];
 
