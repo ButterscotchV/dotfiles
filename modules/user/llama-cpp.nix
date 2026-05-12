@@ -18,11 +18,11 @@ let
       rocmGpuTargets = [ "gfx1100" ];
     }).overrideAttrs
       (oldAttrs: rec {
-        version = "9113";
+        version = "9124";
         src = pkgs.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
-          rev = "1ec7ba0c14f33f17e980daeeda5f35b225d41994";
+          rev = "927dada6c9143ba4c940b72004d2698fa5e4e930";
           hash = "sha256-kcB3HNOZ2sUYRr0L9an7i88hcIzUIHHY0ubVEGoeFlk=";
           leaveDotGit = true;
           postFetch = ''
@@ -97,6 +97,10 @@ in
       "1"
     ];
     modelsPreset = {
+      "unsloth/Qwen3.5-122B-A10B-GGUF:IQ3_XXS" = defaultQwen36Config // {
+        hf-repo = "unsloth/Qwen3.5-122B-A10B-GGUF:UD-IQ3_XXS";
+        c = 80128;
+      };
       "unsloth/Qwen3.6-27B-GGUF:Q4_K_XL" = defaultQwen36Config // {
         hf-repo = "unsloth/Qwen3.6-27B-GGUF:UD-Q4_K_XL";
       };
