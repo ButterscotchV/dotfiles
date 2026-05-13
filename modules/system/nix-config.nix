@@ -10,5 +10,8 @@
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
-  nix.optimise.automatic = true;
+  nix.optimise = {
+    automatic = true;
+    dates = [ "06:30" ];
+  };
 }

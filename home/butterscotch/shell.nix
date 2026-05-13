@@ -32,5 +32,6 @@
     idea-bg = "nohup idea . >/dev/null 2>&1 &";
     nixos-switch = "nixos-rebuild switch --sudo";
     nixos-boot = "nixos-rebuild boot --sudo";
+    nixos-size = "nix path-info --json --all --json-format 1 | jq 'map(.narSize) | add' | numfmt --to=iec-i --suffix=B";
   };
 }
