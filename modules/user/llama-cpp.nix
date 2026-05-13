@@ -16,7 +16,7 @@ let
       rpcSupport = false;
       rocmGpuTargets = [ "gfx1100" ];
     }).overrideAttrs
-      (oldAttrs: rec {
+      (oldAttrs: {
         version = "9124";
         src = pkgs.fetchFromGitHub {
           owner = "ggml-org";
@@ -130,7 +130,7 @@ in
     };
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     llama-cpp-custom
   ];
 }
