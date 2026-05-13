@@ -1,6 +1,6 @@
 {
   home-manager.users.butterscotch =
-    { config, pkgs, ... }:
+    { ... }:
     {
       imports = [
         ../../home/butterscotch

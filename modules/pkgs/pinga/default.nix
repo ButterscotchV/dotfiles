@@ -1,5 +1,4 @@
 {
-  stdenv,
   lib,
   mkWindowsApp,
   wine,
@@ -8,7 +7,6 @@
   makeDesktopIcon,
   copyDesktopItems,
   copyDesktopIcons,
-  unzip,
 }:
 
 mkWindowsApp rec {

@@ -2,7 +2,6 @@
 
 {
   rebelle = pkgs.callPackage ./rebelle {
-    stdenv = pkgs.stdenv;
     lib = pkgs.lib;
     mkWindowsApp = pkgsErosanix.mkWindowsApp;
     wine = pkgs.wineWow64Packages.stable;
@@ -14,7 +13,6 @@
   };
 
   pinga = pkgs.callPackage ./pinga {
-    stdenv = pkgs.stdenv;
     lib = pkgs.lib;
     mkWindowsApp = pkgsErosanix.mkWindowsApp;
     wine = pkgs.wineWow64Packages.stable;
@@ -26,7 +24,6 @@
   };
 
   pingo = pkgs.callPackage ./pingo {
-    stdenv = pkgs.stdenv;
     lib = pkgs.lib;
     mkDerivation = pkgs.stdenvNoCC.mkDerivation;
     runtimeShell = pkgs.runtimeShell;

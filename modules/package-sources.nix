@@ -1,7 +1,5 @@
 {
   pkgs,
-  pkgsErosanix,
-  config,
   inputs,
   ...
 }:
