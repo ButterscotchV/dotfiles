@@ -44,7 +44,6 @@
     affinity-v3
     gimp
     darktable
-    obs-studio
     pkgsLocal.pinga
     pkgsLocal.pingo
     kdePackages.kdenlive
@@ -87,6 +86,8 @@
     jq # JSON processor
     nix-output-monitor # nom
     nixfmt
+    nixd
+    nixdoc
     jetbrains.idea
 
     # === Gaming ===
