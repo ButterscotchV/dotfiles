@@ -27,6 +27,13 @@
               patches = [ ];
             };
       };
+      # Banish Plex Tuner Service to prevent systemd from hanging
+      plexRaw = prev.plexRaw.overrideAttrs (oldAttrs: {
+        postInstall = ''
+          ${oldAttrs.postInstall or ""}
+          rm "$out/lib/plexmediaserver/Plex Tuner Service"
+        '';
+      });
     })
     inputs.affinity-nix.overlays.default
   ];
