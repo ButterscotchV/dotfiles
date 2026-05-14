@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgsLocal,
   lib,
   ...
 }:
@@ -39,8 +40,8 @@
   };
   systemd.services.plex.serviceConfig.ProtectHome = lib.mkForce false;
 
-  environment.systemPackages = with pkgs; [
-    insync-dolphin
+  environment.systemPackages = [
+    pkgsLocal.insync-dolphin
   ];
 
   services.qdrant.enable = true;

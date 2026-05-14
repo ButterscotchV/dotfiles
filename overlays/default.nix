@@ -8,7 +8,6 @@
       openldap = prev.openldap.overrideAttrs {
         doCheck = !prev.stdenv.hostPlatform.isi686;
       };
-      insync-dolphin = prev.callPackage ./insync-dolphin.nix { };
       # Newer rnnoise model
       easyeffects = prev.easyeffects.override {
         rnnoise =
