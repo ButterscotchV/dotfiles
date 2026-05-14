@@ -106,5 +106,9 @@
 
     # === Networking ===
     proton-vpn
+
+    # === PC Monitoring ===
+    mission-center
+    resources
   ];
 }
