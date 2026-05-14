@@ -1,6 +1,9 @@
 { ... }:
 
 {
+  boot.enableContainers = true;
+  virtualisation.containers.enable = true;
+
   virtualisation.docker = {
     enable = true;
     autoPrune.enable = true;

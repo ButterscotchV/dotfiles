@@ -88,7 +88,7 @@ in
   services.llama-cpp = {
     enable = true;
     host = "0.0.0.0";
-    port = 8080;
+    port = 31586;
     package = llama-cpp-custom;
     openFirewall = true;
     extraFlags = [
@@ -128,6 +128,33 @@ in
         hf-repo = "unsloth/gemma-4-E4B-it-GGUF:UD-Q6_K_XL";
       };
     };
+  };
+
+  containers.llama-cpp-embed = {
+    autoStart = true;
+    config =
+      { ... }:
+      {
+        services.llama-cpp = {
+          enable = true;
+          host = "127.0.0.1";
+          port = 31587;
+          package = llama-cpp-custom;
+          extraFlags = [
+            "--no-webui"
+            "--embedding"
+            "--sleep-idle-seconds"
+            "300"
+            "--no-mmproj"
+            "--hf-repo"
+            # Embedding Dimension: 1024
+            "jinaai/jina-embeddings-v5-omni-small-retrieval-GGUF:Q6_K"
+            # Embedding Dimension: 768
+            # "jinaai/jina-embeddings-v5-omni-nano-retrieval-GGUF:Q6_K"
+          ];
+        };
+        system.stateVersion = "26.05";
+      };
   };
 
   environment.systemPackages = [
