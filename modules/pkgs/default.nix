@@ -20,5 +20,7 @@
     wine = pkgs.wineWow64Packages.stable;
   };
 
-  insync-dolphin = pkgs.callPackage ./insync-dolphin.nix { };
+  insync-dolphin = pkgs.callPackage ./insync-dolphin {
+    ECM = pkgs.kdePackages.extra-cmake-modules;
+  };
 }
