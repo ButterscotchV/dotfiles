@@ -38,6 +38,7 @@
     spotify
     qbittorrent
     ffmpeg
+    handbrake
     pkgsRocm.blender
     pkgsLocal.rebelle
     affinity-v3
@@ -46,6 +47,7 @@
     pkgsLocal.pinga
     pkgsLocal.pingo
     kdePackages.kdenlive
+    yt-dlp
 
     # === CD Ripping ===
     kdePackages.audiocd-kio
