@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgsStable, ... }:
 
 {
   imports = [
@@ -63,6 +63,7 @@
 
   services.easyeffects = {
     enable = true;
+    package = pkgsStable.easyeffects;
   };
 
   programs.firefox = {
