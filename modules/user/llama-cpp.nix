@@ -40,6 +40,7 @@ let
           ++ [
             (lib.cmakeBool "GGML_NATIVE" true)
             (lib.cmakeBool "GGML_HIP_ROCWMMA_FATTN" true)
+            (lib.cmakeFeature "GPU_TARGETS" "gfx1100;gfx1036")
           ]
         );
         env = (oldAttrs.env or { }) // {
