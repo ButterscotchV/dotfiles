@@ -63,7 +63,6 @@
 
   services.easyeffects = {
     enable = true;
-    package = pkgsStable.easyeffects;
   };
 
   programs.firefox = {
