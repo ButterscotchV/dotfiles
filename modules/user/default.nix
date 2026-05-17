@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./udev.nix
     ./steam.nix
   ];
 

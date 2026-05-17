@@ -11,6 +11,7 @@
     ./network.nix
     ./nix-config.nix
     ./packages.nix
+    ./udev.nix
     ./virtualisation.nix
   ];
 
