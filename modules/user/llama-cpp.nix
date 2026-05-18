@@ -5,6 +5,17 @@
 }:
 
 let
+  vulkan-headers = pkgs.vulkan-headers.overrideAttrs (
+    finalAttrs: previousAttrs: {
+      version = "1.4.350.0";
+      src = pkgs.fetchFromGitHub {
+        owner = "KhronosGroup";
+        repo = "Vulkan-Headers";
+        rev = "vulkan-sdk-${finalAttrs.version}";
+        hash = "sha256-RcUVurC+Rc0MyWpQLaLVmdn7FZO1GWWzTZZAOwvKwb4=";
+      };
+    }
+  );
   llama-cpp-custom =
     (pkgs.llama-cpp.override {
       cudaSupport = false;
@@ -15,8 +26,36 @@ let
       blasSupport = true;
       rpcSupport = false;
       rocmGpuTargets = [ "gfx1100" ];
+
+      shaderc = pkgs.shaderc.overrideAttrs (
+        finalAttrs: previousAttrs: {
+          version = "2026.2";
+          src = pkgs.fetchFromGitHub {
+            owner = "google";
+            repo = "shaderc";
+            rev = "v${finalAttrs.version}";
+            hash = "sha256-LYI1MMFjBbpziT3nV5sZ8CDilzUExbb4eXl6MOkg1Fw=";
+          };
+        }
+      );
+      inherit vulkan-headers;
+      vulkan-loader =
+        (pkgs.vulkan-loader.override {
+          inherit vulkan-headers;
+        }).overrideAttrs
+          (
+            finalAttrs: previousAttrs: {
+              version = "1.4.350.0";
+              src = pkgs.fetchFromGitHub {
+                owner = "KhronosGroup";
+                repo = "Vulkan-Loader";
+                rev = "vulkan-sdk-${finalAttrs.version}";
+                hash = "sha256-jgibBetbMpqRJ+OJpJgNxgC6phECewNqtla9CCJj56U=";
+              };
+            }
+          );
     }).overrideAttrs
-      (oldAttrs: {
+      (previousAttrs: {
         version = "9205";
         src = pkgs.fetchFromGitHub {
           owner = "ggml-org";
@@ -29,24 +68,24 @@ let
             find "$out" -name .git -print0 | xargs -0 rm -rf
           '';
         };
-        buildInputs = oldAttrs.buildInputs ++ [
+        buildInputs = previousAttrs.buildInputs ++ [
           pkgs.rocmPackages.rocwmma
         ];
         npmRoot = "tools/ui";
         npmDepsHash = "sha256-WaEePrEZ7O/7deP2KJhe0AwiSKYA8HOqETmMHUkmBe0=";
         cmakeFlags = (
           # Filter out existing GGML_NATIVE flag
-          (lib.filter (x: !(lib.hasInfix "GGML_NATIVE" x)) (oldAttrs.cmakeFlags or [ ]))
+          (lib.filter (x: !(lib.hasInfix "GGML_NATIVE" x)) (previousAttrs.cmakeFlags or [ ]))
           ++ [
             (lib.cmakeBool "GGML_NATIVE" true)
             (lib.cmakeBool "GGML_HIP_ROCWMMA_FATTN" true)
             (lib.cmakeFeature "GPU_TARGETS" "gfx1100;gfx1036")
           ]
         );
-        env = (oldAttrs.env or { }) // {
+        env = (previousAttrs.env or { }) // {
           CPATH =
             let
-              oldCPATH = oldAttrs.env.CPATH or "";
+              oldCPATH = previousAttrs.env.CPATH or "";
             in
             (lib.makeIncludePath [ pkgs.rocmPackages.rocwmma ])
             + (lib.optionalString (oldCPATH != "") ":${oldCPATH}");
@@ -63,7 +102,7 @@ let
     ctx-checkpoints = "4";
     checkpoint-every-n-tokens = "8192";
     fit = "on";
-    chat-template-kwargs = "{\"enable_thinking\":true}";
+    reasoning = "on";
     mmproj-offload = "disabled";
     sleep-idle-seconds = "300";
   };
@@ -145,9 +184,6 @@ in
       };
       "unsloth/gemma-4-26B-A4B-it-GGUF:Q4_K_M" = defaultGemma4Config // {
         hf-repo = "unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q4_K_M";
-      };
-      "unsloth/gemma-4-E4B-it-GGUF:Q8_K_XL" = defaultGemma4Config // {
-        hf-repo = "unsloth/gemma-4-E4B-it-GGUF:UD-Q8_K_XL";
       };
       "unsloth/gemma-4-E4B-it-GGUF:Q6_K_XL" = defaultGemma4Config // {
         hf-repo = "unsloth/gemma-4-E4B-it-GGUF:UD-Q6_K_XL";
