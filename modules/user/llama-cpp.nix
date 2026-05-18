@@ -94,8 +94,11 @@ let
         };
       });
   defaultConfig = {
-    # ROCm0 or Vulkan0
+    # device = "ROCm0";
     device = "Vulkan0";
+    # device = "Vulkan1,Vulkan0";
+    # main-gpu = "1";
+    # fit-target = "64,1024";
     flash-attn = "enabled";
     cache-type-k = "q8_0";
     cache-type-v = "q8_0";
@@ -118,7 +121,10 @@ let
   defaultQwen35MTPConfig = (
     defaultQwen35Config
     // {
+      spec-draft-device = "Vulkan0";
+      # spec-draft-device = "Vulkan1,Vulkan0";
       spec-type = "draft-mtp";
+      spec-draft-n-max = "6";
     }
   );
   defaultQwen36Config = (

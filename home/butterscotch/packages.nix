@@ -87,7 +87,7 @@
     jq # JSON processor
     nix-output-monitor # nom
     nixfmt
-    nixd
+    pkgsStable.nixd
     nixdoc
     jetbrains.idea
 
