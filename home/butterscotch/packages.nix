@@ -112,5 +112,7 @@
     # === PC Monitoring ===
     mission-center
     resources
+    kdePackages.filelight
+    qdirstat
   ];
 }
