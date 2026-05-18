@@ -190,6 +190,9 @@ in
       };
     };
   };
+  systemd.services.llama-cpp.serviceConfig.Environment = [
+    "MESA_SHADER_CACHE_DIR=/var/cache/llama-cpp/mesa_shader_cache"
+  ];
 
   containers.llama-cpp-embed = {
     autoStart = true;
@@ -214,6 +217,9 @@ in
             # "jinaai/jina-embeddings-v5-omni-nano-retrieval-GGUF:Q6_K"
           ];
         };
+        systemd.services.llama-cpp.serviceConfig.Environment = [
+          "MESA_SHADER_CACHE_DIR=/var/cache/llama-cpp/mesa_shader_cache"
+        ];
         system.stateVersion = "26.05";
       };
   };
