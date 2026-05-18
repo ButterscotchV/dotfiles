@@ -63,11 +63,11 @@ let
     ctx-checkpoints = "4";
     checkpoint-every-n-tokens = "8192";
     fit = "on";
-    chat-template-kwargs = "{\"preserve_thinking\":true}";
+    chat-template-kwargs = "{\"enable_thinking\":true}";
     mmproj-offload = "disabled";
     sleep-idle-seconds = "300";
   };
-  defaultQwen36Config = (
+  defaultQwen35Config = (
     defaultConfig
     // {
       temp = "1.0";
@@ -76,6 +76,19 @@ let
       min-p = "0.0";
     }
   );
+  defaultQwen35MTPConfig = (
+    defaultQwen35Config
+    // {
+      spec-type = "draft-mtp";
+    }
+  );
+  defaultQwen36Config = (
+    defaultQwen35Config
+    // {
+      chat-template-kwargs = "{\"preserve_thinking\":true}";
+    }
+  );
+  defaultQwen36MTPConfig = (defaultQwen35MTPConfig // defaultQwen36Config);
   defaultGemma4Config = (
     defaultConfig
     // {
@@ -98,15 +111,25 @@ in
       "1"
     ];
     modelsPreset = {
-      "unsloth/Qwen3.5-122B-A10B-GGUF:IQ3_XXS" = defaultQwen36Config // {
+      "unsloth/Qwen3.5-122B-A10B-MTP-GGUF:IQ3_XXS" = defaultQwen35MTPConfig // {
+        hf-repo = "unsloth/Qwen3.5-122B-A10B-MTP-GGUF:UD-IQ3_XXS";
+        c = 80128;
+      };
+      "unsloth/Qwen3.5-122B-A10B-GGUF:IQ3_XXS" = defaultQwen35Config // {
         hf-repo = "unsloth/Qwen3.5-122B-A10B-GGUF:UD-IQ3_XXS";
         c = 80128;
+      };
+      "unsloth/Qwen3.6-27B-MTP-GGUF:Q6_K_XL" = defaultQwen36MTPConfig // {
+        hf-repo = "unsloth/Qwen3.6-27B-MTP-GGUF:UD-Q6_K_XL";
       };
       "unsloth/Qwen3.6-27B-GGUF:Q4_K_XL" = defaultQwen36Config // {
         hf-repo = "unsloth/Qwen3.6-27B-GGUF:UD-Q4_K_XL";
       };
       "unsloth/Qwen3.6-27B-GGUF:Q3_K_XL" = defaultQwen36Config // {
         hf-repo = "unsloth/Qwen3.6-27B-GGUF:UD-Q3_K_XL";
+      };
+      "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:Q6_K_XL" = defaultQwen36MTPConfig // {
+        hf-repo = "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q6_K_XL";
       };
       "unsloth/Qwen3.6-35B-A3B-GGUF:Q4_K_M" = defaultQwen36Config // {
         hf-repo = "unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_M";
