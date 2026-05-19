@@ -56,12 +56,12 @@ let
           );
     }).overrideAttrs
       (previousAttrs: {
-        version = "9205";
+        version = "9234";
         src = pkgs.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
-          rev = "dd7cad7197f991b18ded6aca46ff095972b95318";
-          hash = "sha256-nLacNxmdYhwOv4+ssuQrSLY2T6CQlLNeLF9vdmjWqQw=";
+          rev = "6db130445d29b243ee2171efb8cd61b84a1c5322";
+          hash = "sha256-NaYOIDHWuEc3zmovxEY9Fgwp/y1poy9MXuN3eEC4LFU=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -72,7 +72,7 @@ let
           pkgs.rocmPackages.rocwmma
         ];
         npmRoot = "tools/ui";
-        npmDepsHash = "sha256-WaEePrEZ7O/7deP2KJhe0AwiSKYA8HOqETmMHUkmBe0=";
+        npmDepsHash = "sha256-Iyg8FpcTKf2UYHuK7mA3cTAqVaLcQPcS0YCa5Qf01Gc=";
         cmakeFlags = (
           # Filter out existing GGML_NATIVE flag
           (lib.filter (x: !(lib.hasInfix "GGML_NATIVE" x)) (previousAttrs.cmakeFlags or [ ]))
