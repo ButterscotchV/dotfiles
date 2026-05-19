@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  utils,
   ...
 }:
 
@@ -56,12 +57,12 @@ let
           );
     }).overrideAttrs
       (previousAttrs: {
-        version = "9234";
+        version = "9244";
         src = pkgs.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
-          rev = "6db130445d29b243ee2171efb8cd61b84a1c5322";
-          hash = "sha256-NaYOIDHWuEc3zmovxEY9Fgwp/y1poy9MXuN3eEC4LFU=";
+          rev = "b28a2f372a4a470a90ad10f93654e5dc33e78949";
+          hash = "sha256-SXOpTS3q5Vaik76fg2WQ1mmwAk9+KSMdLe4AErQQlOA=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -200,17 +201,32 @@ in
     "MESA_SHADER_CACHE_DIR=/var/cache/llama-cpp/mesa_shader_cache"
   ];
 
-  containers.llama-cpp-embed = {
-    autoStart = true;
-    config =
-      { ... }:
-      {
-        services.llama-cpp = {
-          enable = true;
-          host = "127.0.0.1";
-          port = 31587;
-          package = llama-cpp-custom;
-          extraFlags = [
+  systemd.services.llama-cpp-embed = {
+    description = "LLaMA C++ server (embeddings)";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "idle";
+      KillSignal = "SIGINT";
+      StateDirectory = "llama-cpp-embed";
+      CacheDirectory = "llama-cpp";
+      WorkingDirectory = "/var/lib/llama-cpp-embed";
+      Environment = [
+        "LLAMA_CACHE=/var/cache/llama-cpp"
+        "MESA_SHADER_CACHE_DIR=/var/cache/llama-cpp/mesa_shader_cache"
+      ];
+
+      # Points directly to the server binary inside your package
+      ExecStart =
+        let
+          args = [
+            "--host"
+            "127.0.0.1"
+            "--port"
+            "31587"
+            "--device"
+            "Vulkan1"
             "--no-webui"
             "--embedding"
             "--sleep-idle-seconds"
@@ -222,13 +238,51 @@ in
             # Embedding Dimension: 768
             # "jinaai/jina-embeddings-v5-omni-nano-retrieval-GGUF:Q6_K"
           ];
-        };
-        systemd.services.llama-cpp.serviceConfig.Environment = [
-          "MESA_SHADER_CACHE_DIR=/var/cache/llama-cpp/mesa_shader_cache"
-        ];
-        system.stateVersion = "26.05";
-      };
+        in
+        "${llama-cpp-custom}/bin/llama-server ${utils.escapeSystemdExecArgs args}";
+      Restart = "on-failure";
+      RestartSec = 300;
+
+      # for GPU acceleration
+      PrivateDevices = false;
+
+      # hardening
+      DynamicUser = true;
+      CapabilityBoundingSet = "";
+      RestrictAddressFamilies = [
+        "AF_INET"
+        "AF_INET6"
+        "AF_UNIX"
+      ];
+      NoNewPrivileges = true;
+      PrivateMounts = true;
+      PrivateTmp = true;
+      PrivateUsers = true;
+      ProtectClock = true;
+      ProtectControlGroups = true;
+      ProtectHome = true;
+      ProtectKernelLogs = true;
+      ProtectKernelModules = true;
+      ProtectKernelTunables = true;
+      ProtectSystem = "strict";
+      MemoryDenyWriteExecute = true;
+      LockPersonality = true;
+      RemoveIPC = true;
+      RestrictNamespaces = true;
+      RestrictRealtime = true;
+      RestrictSUIDSGID = true;
+      SystemCallArchitectures = "native";
+      SystemCallFilter = [
+        "@system-service"
+        "~@privileged"
+      ];
+      SystemCallErrorNumber = "EPERM";
+      ProtectProc = "invisible";
+      ProtectHostname = true;
+      ProcSubset = "pid";
+    };
   };
+  networking.firewall.allowedTCPPorts = [ 31587 ];
 
   environment.systemPackages = [
     llama-cpp-custom
