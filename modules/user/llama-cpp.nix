@@ -6,17 +6,6 @@
 }:
 
 let
-  vulkan-headers = pkgs.vulkan-headers.overrideAttrs (
-    finalAttrs: previousAttrs: {
-      version = "1.4.350.0";
-      src = pkgs.fetchFromGitHub {
-        owner = "KhronosGroup";
-        repo = "Vulkan-Headers";
-        rev = "vulkan-sdk-${finalAttrs.version}";
-        hash = "sha256-RcUVurC+Rc0MyWpQLaLVmdn7FZO1GWWzTZZAOwvKwb4=";
-      };
-    }
-  );
   llama-cpp-custom =
     (pkgs.llama-cpp.override {
       cudaSupport = false;
@@ -27,42 +16,14 @@ let
       blasSupport = true;
       rpcSupport = false;
       rocmGpuTargets = [ "gfx1100" ];
-
-      shaderc = pkgs.shaderc.overrideAttrs (
-        finalAttrs: previousAttrs: {
-          version = "2026.2";
-          src = pkgs.fetchFromGitHub {
-            owner = "google";
-            repo = "shaderc";
-            rev = "v${finalAttrs.version}";
-            hash = "sha256-LYI1MMFjBbpziT3nV5sZ8CDilzUExbb4eXl6MOkg1Fw=";
-          };
-        }
-      );
-      inherit vulkan-headers;
-      vulkan-loader =
-        (pkgs.vulkan-loader.override {
-          inherit vulkan-headers;
-        }).overrideAttrs
-          (
-            finalAttrs: previousAttrs: {
-              version = "1.4.350.0";
-              src = pkgs.fetchFromGitHub {
-                owner = "KhronosGroup";
-                repo = "Vulkan-Loader";
-                rev = "vulkan-sdk-${finalAttrs.version}";
-                hash = "sha256-jgibBetbMpqRJ+OJpJgNxgC6phECewNqtla9CCJj56U=";
-              };
-            }
-          );
     }).overrideAttrs
       (previousAttrs: {
-        version = "9244";
+        version = "9246";
         src = pkgs.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
-          rev = "b28a2f372a4a470a90ad10f93654e5dc33e78949";
-          hash = "sha256-SXOpTS3q5Vaik76fg2WQ1mmwAk9+KSMdLe4AErQQlOA=";
+          rev = "871b0b70f81d26494613ad7a9dcb933b1aec4611";
+          hash = "sha256-UZqmxIlG2iAbEZuQBUplSNjSMtw+E/5E3crK40lvDGU=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -125,7 +86,7 @@ let
       spec-draft-device = "Vulkan0";
       # spec-draft-device = "Vulkan1,Vulkan0";
       spec-type = "draft-mtp";
-      spec-draft-n-max = "6";
+      spec-draft-n-max = "2";
     }
   );
   defaultQwen36Config = (
