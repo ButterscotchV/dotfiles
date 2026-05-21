@@ -49,7 +49,7 @@ mkWindowsApp rec {
   # WINEPREFIX, WINEARCH, AND WINEDLLOVERRIDES are set
   # and wine, winetricks, and cabextract are in the environment.
   winAppInstall = ''
-    wine ${src} /VERYSILENT /SUPPRESSMSGBOXES
+    ${wine}/bin/wine ${src} /VERYSILENT /SUPPRESSMSGBOXES
   '';
 
   # This code runs before winAppRun, but only for the first instance.
@@ -66,7 +66,8 @@ mkWindowsApp rec {
   # DO NOT BLOCK. For example, don't run: wineserver -w
   winAppRun = ''
     export WINEDLLOVERRIDES="wintab32=n,b"
-    wine "$WINEPREFIX/drive_c/Program Files/Rebelle 7/Rebelle 7.exe" "$ARGS"
+    export WINEDEBUG="+x11drv"
+    ${wine}/bin/wine "$WINEPREFIX/drive_c/Program Files/Rebelle 7/Rebelle 7.exe" "$ARGS"
   '';
 
   # This code will run after winAppRun, but only for the first instance.
