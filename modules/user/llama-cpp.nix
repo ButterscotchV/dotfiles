@@ -57,10 +57,10 @@ let
       });
   defaultConfig = {
     # device = "ROCm0";
-    device = "Vulkan0";
-    # device = "Vulkan1,Vulkan0";
-    # main-gpu = "1";
-    # fit-target = "64,1024";
+    # device = "Vulkan0";
+    device = "Vulkan1,Vulkan0";
+    main-gpu = "1";
+    fit-target = "64,1024";
     flash-attn = "enabled";
     cache-type-k = "q8_0";
     cache-type-v = "q8_0";
@@ -68,7 +68,7 @@ let
     checkpoint-every-n-tokens = "8192";
     fit = "on";
     reasoning = "on";
-    mmproj-offload = "disabled";
+    # mmproj-offload = "disabled";
     sleep-idle-seconds = "300";
   };
   defaultQwen35Config = (
