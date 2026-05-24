@@ -1,5 +1,4 @@
 {
-  pkgs,
   pkgsLocal,
   lib,
   ...
@@ -13,7 +12,7 @@
     ./storage.nix
     ../../modules/system
     ../../modules/user
-    ../../modules/user/vr.nix
+    ../../modules/user/gaming/vr.nix
     ../../modules/user/llama-cpp.nix
   ];
 

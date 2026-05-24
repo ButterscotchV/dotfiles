@@ -2,7 +2,9 @@
 
 {
   imports = [
-    ./steam.nix
+    ./gaming/steam.nix
+    ./peripherals/mouse.nix
+    ./peripherals/printer.nix
   ];
 
   # User configuration
@@ -18,17 +20,5 @@
       "wheel"
     ];
     shell = pkgs.zsh;
-  };
-
-  # SlimeVR
-  services.udev.extraFiles = [
-    ./69-slimevr-devices.rules
-  ];
-  networking = {
-    firewall.allowedTCPPorts = [ 21110 ];
-    firewall.allowedUDPPorts = [
-      6969
-      8266
-    ];
   };
 }
