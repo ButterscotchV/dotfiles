@@ -19,12 +19,12 @@ let
     }).overrideAttrs
       (previousAttrs: {
         # BUILD_NUMBER="$(git rev-list --count HEAD)"
-        version = "9306";
+        version = "9329";
         src = pkgs.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
-          rev = "5d246a792ddf839e87fb777681dd2a9ac7f7eb5e";
-          hash = "sha256-rCFgCCVAnd4oR9kkzunhSnshhaA/iqGP3ahRrAuKWdY=";
+          rev = "c1f1e28d29948892b6aec04b53053a3fd1dc4df3";
+          hash = "sha256-Zpgf07WlD5KqBueDoR2kWS5NVu2cei5+xhhjUOBvLNw=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
@@ -61,12 +61,13 @@ let
     # device = "Vulkan0";
     device = "Vulkan1,Vulkan0";
     main-gpu = "1";
+    split-mode = "row";
     fit-target = "64,1024";
     flash-attn = "enabled";
     cache-type-k = "q8_0";
     cache-type-v = "q8_0";
     ctx-checkpoints = "4";
-    checkpoint-every-n-tokens = "8192";
+    checkpoint-min-step = "8192";
     fit = "on";
     reasoning = "on";
     # mmproj-offload = "disabled";
@@ -123,35 +124,23 @@ in
         hf-repo = "unsloth/Qwen3.5-122B-A10B-GGUF:UD-IQ3_XXS";
         c = 80128;
       };
-      "unsloth/Qwen3.6-27B-MTP-GGUF:Q6_K_XL" = defaultQwen36MTPConfig // {
-        hf-repo = "unsloth/Qwen3.6-27B-MTP-GGUF:UD-Q6_K_XL";
+      "unsloth/Qwen3.6-27B-MTP-GGUF:Q5_K_XL" = defaultQwen36MTPConfig // {
+        hf-repo = "unsloth/Qwen3.6-27B-MTP-GGUF:UD-Q5_K_XL";
       };
-      "unsloth/Qwen3.6-27B-GGUF:Q6_K_XL" = defaultQwen36Config // {
-        hf-repo = "unsloth/Qwen3.6-27B-GGUF:UD-Q6_K_XL";
+      "unsloth/Qwen3.6-27B-GGUF:Q5_K_XL" = defaultQwen36Config // {
+        hf-repo = "unsloth/Qwen3.6-27B-GGUF:UD-Q5_K_XL";
       };
-      "unsloth/Qwen3.6-27B-GGUF:Q3_K_XL" = defaultQwen36Config // {
-        hf-repo = "unsloth/Qwen3.6-27B-GGUF:UD-Q3_K_XL";
+      "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:Q5_K_XL" = defaultQwen36MTPConfig // {
+        hf-repo = "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q5_K_XL";
       };
-      "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:Q6_K_XL" = defaultQwen36MTPConfig // {
-        hf-repo = "unsloth/Qwen3.6-35B-A3B-MTP-GGUF:UD-Q6_K_XL";
+      "unsloth/Qwen3.6-35B-A3B-GGUF:Q5_K_XL" = defaultQwen36Config // {
+        hf-repo = "unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q5_K_XL";
       };
-      "unsloth/Qwen3.6-35B-A3B-GGUF:Q4_K_M" = defaultQwen36Config // {
-        hf-repo = "unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_M";
+      "unsloth/gemma-4-31B-it-GGUF:Q5_K_XL" = defaultGemma4Config // {
+        hf-repo = "unsloth/gemma-4-31B-it-GGUF:UD-Q5_K_XL";
       };
-      "unsloth/gemma-4-31B-it-GGUF:Q6_K_XL" = defaultGemma4Config // {
-        hf-repo = "unsloth/gemma-4-31B-it-GGUF:UD-Q6_K_XL";
-      };
-      "unsloth/gemma-4-31B-it-GGUF:IQ3_XXS" = defaultGemma4Config // {
-        hf-repo = "unsloth/gemma-4-31B-it-GGUF:UD-IQ3_XXS";
-      };
-      "unsloth/gemma-4-26B-A4B-it-GGUF:Q6_K_XL" = defaultGemma4Config // {
-        hf-repo = "unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q6_K_XL";
-      };
-      "unsloth/gemma-4-26B-A4B-it-GGUF:Q4_K_M" = defaultGemma4Config // {
-        hf-repo = "unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q4_K_M";
-      };
-      "unsloth/gemma-4-E4B-it-GGUF:Q6_K_XL" = defaultGemma4Config // {
-        hf-repo = "unsloth/gemma-4-E4B-it-GGUF:UD-Q6_K_XL";
+      "unsloth/gemma-4-E4B-it-GGUF:Q5_K_XL" = defaultGemma4Config // {
+        hf-repo = "unsloth/gemma-4-E4B-it-GGUF:UD-Q5_K_XL";
       };
     };
   };
