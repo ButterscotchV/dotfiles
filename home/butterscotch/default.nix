@@ -53,9 +53,15 @@
         temurin-bin-17
         temurin-bin-21
         nodejs
+        mono
+        dotnet-sdk_8
+        dotnet-sdk_9
+        dotnet-sdk_10
+        dotnet-sdk_11
         dotnet-aspnetcore_8
         dotnet-aspnetcore_9
         dotnet-aspnetcore_10
+        dotnet-aspnetcore_11
         python3
       ]
     );
