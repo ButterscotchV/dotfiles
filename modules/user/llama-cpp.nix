@@ -157,11 +157,11 @@ in
       Type = "idle";
       KillSignal = "SIGINT";
       StateDirectory = "llama-cpp-embed";
-      CacheDirectory = "llama-cpp";
+      CacheDirectory = "llama-cpp-embed";
       WorkingDirectory = "/var/lib/llama-cpp-embed";
       Environment = [
-        "LLAMA_CACHE=/var/cache/llama-cpp"
-        "MESA_SHADER_CACHE_DIR=/var/cache/llama-cpp/mesa_shader_cache"
+        "LLAMA_CACHE=/var/cache/llama-cpp-embed"
+        "MESA_SHADER_CACHE_DIR=/var/cache/llama-cpp-embed/mesa_shader_cache"
       ];
 
       # Points directly to the server binary inside your package
