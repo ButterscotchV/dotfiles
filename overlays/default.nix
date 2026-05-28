@@ -24,13 +24,59 @@
             };
             patches = [ ];
           };
-      # Banish Plex Tuner Service to prevent systemd from hanging
-      plexRaw = prev.plexRaw.overrideAttrs (oldAttrs: {
-        postInstall = ''
-          ${oldAttrs.postInstall or ""}
-          rm "$out/lib/plexmediaserver/Plex Tuner Service"
+      # From https://github.com/NixOS/nixpkgs/pull/524960
+      github-desktop = prev.github-desktop.overrideAttrs {
+        postConfigure = ''
+          yarnOfflineCache="$cacheRoot" runHook yarnConfigHook
+
+          pushd app
+          yarnOfflineCache="$cacheApp" runHook yarnConfigHook
+          popd
+
+          yarn --cwd app/node_modules/desktop-notifications run install
+
+          # use git from nixpkgs instead of an automatically downloaded one by dugite
+          gitRoot=app/node_modules/dugite/git
+          makeWrapper ${prev.lib.getExe prev.git} "$gitRoot/bin/git" \
+            --prefix PATH : ${prev.lib.makeBinPath [ prev.git-lfs ]}
+
+          mkdir -p "$gitRoot/libexec/git-core"
+
+          for script in ${prev.git}/libexec/git-core/*; do
+            ln -s "$script" "$gitRoot/libexec/git-core/$(basename "$script")"
+          done
+
+          # exception: printenvz needs `node-gyp` configure first for some reason
+          pushd node_modules/printenvz
+          node node_modules/.bin/node-gyp configure
+          popd
+
+          declare -a natives=(
+            app/node_modules/fs-admin
+            app/node_modules/keytar
+            app/node_modules/desktop-trampoline
+            app/node_modules/windows-argv-parser
+            node_modules/printenvz
+          )
+          for native in "''${natives[@]}"; do
+            yarn --offline --cwd $native build
+          done
+
+          # exception: desktop-trampoline doesn't include `node-gyp rebuild` in its build script anymore
+          pushd app/node_modules/desktop-trampoline
+          node-gyp rebuild
+          popd
+
+          yarn compile:script
+
+          touch electron
+          zip -0Xqr electron-v${prev.electron.version}-${prev.stdenv.hostPlatform.node.platform}-${prev.stdenv.hostPlatform.node.arch}.zip electron
+          rm electron
+
+          substituteInPlace script/build.ts \
+            --replace-fail "return packager({" "return packager({electronZipDir:\"$(pwd)\",electronVersion: \"${prev.electron.version}\","
         '';
-      });
+      };
     })
     inputs.affinity-nix.overlays.default
   ];

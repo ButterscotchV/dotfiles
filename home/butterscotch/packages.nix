@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgsStable,
   pkgsLocal,
   ...
 }:
@@ -78,16 +77,11 @@
 
     # === Development ===
     git-credential-manager
-    (pkgsStable.github-desktop.overrideAttrs (oldAttrs: {
-      postFixup = ''
-        wrapProgram "$out/bin/github-desktop" \
-          --add-flags "--ozone-platform=x11"
-      '';
-    }))
+    github-desktop
     jq # JSON processor
     nix-output-monitor # nom
     nixfmt
-    pkgsStable.nixd
+    nixd
     nixdoc
     jetbrains.idea
     opencode
