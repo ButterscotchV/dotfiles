@@ -56,7 +56,6 @@
             inherit inputs;
           };
           modules = with nixos-hardware.nixosModules; [
-            ./overlays/xr-pkgs.nix
             ./hosts/lamb-laptop
             home-manager.nixosModules.home-manager
             {
@@ -80,7 +79,6 @@
             inherit inputs;
           };
           modules = with nixos-hardware.nixosModules; [
-            ./overlays/xr-pkgs.nix
             ./hosts/lamb-desktop-2
             home-manager.nixosModules.home-manager
             {

@@ -1,13 +1,12 @@
 {
   pkgs,
-  pkgsStable,
   ...
 }:
 
 {
   home.packages = with pkgs; [
     vrcx
-    pkgsStable.wayvr
+    wayvr
     insync
   ];
 
