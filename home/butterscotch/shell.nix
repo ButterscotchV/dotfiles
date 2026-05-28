@@ -32,12 +32,15 @@ in
   programs.bash.enable = true;
 
   home.shellAliases = {
-    idea-bg = "nohup idea . >/dev/null 2>&1 &";
+    # Easy NixOS tools
     nixos-switch = "nixos-rebuild switch --sudo";
     nixos-boot = "nixos-rebuild boot --sudo";
     nixos-size = "nix path-info --json --all --json-format 1 | jq 'map(.narSize) | add' | numfmt --to=iec-i --suffix=B";
     nixos-clean = "nix-collect-garbage -d && sudo nix-collect-garbage -d && nix store optimise";
-    nixos-repair = "nix-store --verify --check-contents --repair";
+    nixos-repair = "sudo nix-store --verify --check-contents --repair";
+
+    # Utility
+    idea-bg = "nohup idea . >/dev/null 2>&1 &";
     yt-dlp-auto = "yt-dlp --embed-subs --sub-lang 'en' -f bv*+ba/b";
     yt-dlp-auto-b = "yt-dlp-auto --cookies-from-browser firefox --user-agent '${userAgent}'";
     yt-dlp-audio = "yt-dlp -f ba -x";
