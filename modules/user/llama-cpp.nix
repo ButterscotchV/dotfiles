@@ -19,12 +19,12 @@ let
     }).overrideAttrs
       (previousAttrs: {
         # BUILD_NUMBER="$(git rev-list --count HEAD)"
-        version = "9329";
+        version = "9372";
         src = pkgs.fetchFromGitHub {
           owner = "ggml-org";
           repo = "llama.cpp";
-          rev = "c1f1e28d29948892b6aec04b53053a3fd1dc4df3";
-          hash = "sha256-Zpgf07WlD5KqBueDoR2kWS5NVu2cei5+xhhjUOBvLNw=";
+          rev = "8ad8aef447703e76cdcf74ed78dab16b92ec231a";
+          hash = "sha256-MfHIKjIJZ3kxIjOePzSIpA1qzZyRiskORNubxkHC0Hw=";
           leaveDotGit = true;
           postFetch = ''
             git -C "$out" rev-parse --short HEAD > $out/COMMIT
