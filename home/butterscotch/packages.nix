@@ -90,6 +90,7 @@
     pkgsStable.nixd
     nixdoc
     jetbrains.idea
+    opencode
 
     # === Gaming ===
     (prismlauncher.override {
