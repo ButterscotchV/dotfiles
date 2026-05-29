@@ -24,6 +24,7 @@
     (stoat-desktop.override {
       electron_38 = electron;
     })
+    kdePackages.kamoso
 
     # === Media ===
     krita
