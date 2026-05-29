@@ -110,5 +110,6 @@
     resources
     kdePackages.filelight
     qdirstat
+    kdePackages.partitionmanager
   ];
 }
