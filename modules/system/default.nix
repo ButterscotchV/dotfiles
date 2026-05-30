@@ -46,4 +46,6 @@
       turbo = "auto";
     };
   };
+
+  services.flatpak.enable = true;
 }

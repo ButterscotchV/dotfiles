@@ -6,6 +6,7 @@
     ./packages.nix
     ./shell.nix
     ./plasma.nix
+    ./flatpak.nix
   ];
 
   home.username = "butterscotch";

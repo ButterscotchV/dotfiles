@@ -28,19 +28,16 @@
       url = "github:mrshmllow/affinity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      nixpkgs-stable,
       nixos-hardware,
       home-manager,
       plasma-manager,
-      nixpkgs-xr,
-      erosanix,
-      affinity-nix,
       ...
     }@inputs:
     let
