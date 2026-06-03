@@ -364,6 +364,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-wine-10": {
+      "locked": {
+        "lastModified": 1770380644,
+        "narHash": "sha256-P7dWMHRUWG5m4G+06jDyThXO7kwSk46C1kgjEWcybkE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ae67888ff7ef9dff69b3cf0cc0fbfbcd3a722abe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ae67888ff7ef9dff69b3cf0cc0fbfbcd3a722abe",
+        "type": "github"
+      }
+    },
     "nixpkgs-xr": {
       "inputs": {
         "flake-compat": "flake-compat_4",
@@ -530,6 +546,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
+        "nixpkgs-wine-10": "nixpkgs-wine-10",
         "nixpkgs-xr": "nixpkgs-xr",
         "plasma-manager": "plasma-manager"
       }

@@ -1,9 +1,14 @@
-{ pkgs, pkgsErosanix, ... }:
+{
+  pkgs,
+  pkgsErosanix,
+  pkgsWine10,
+  ...
+}:
 
 {
   rebelle = pkgs.callPackage ./rebelle {
     mkWindowsApp = pkgsErosanix.mkWindowsApp;
-    wine = pkgs.wineWow64Packages.stable;
+    wine = pkgsWine10.wineWow64Packages.stable;
     makeDesktopIcon = pkgsErosanix.makeDesktopIcon;
     copyDesktopIcons = pkgsErosanix.copyDesktopIcons;
   };

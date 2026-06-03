@@ -3,6 +3,7 @@
   mkWindowsApp,
   wine,
   fetchurl,
+  fetchzip,
   makeDesktopItem,
   makeDesktopIcon,
   copyDesktopItems,
@@ -18,6 +19,15 @@ mkWindowsApp rec {
   src = fetchurl {
     url = "https://escapemotions1.b-cdn.net/products/rebelle/update/downloads/Rebelle_v${version}_Windows_64bit.exe";
     sha256 = "sha256-hfuhaHZhITNWpurAhVOREE/EXZAzSLLHLK6P61BCT6c=";
+  };
+
+  # https://github.com/Graham--M/XWinTab
+  # XWinTab - Tablet support for Rebelle on WINE
+  xwintabVersion = "0.5.0";
+  xwintab = fetchzip {
+    url = "https://github.com/Graham--M/XWinTab/releases/download/v${xwintabVersion}/XWinTab.v${xwintabVersion}.zip";
+    sha256 = "sha256-nZ4aiY0ys5b/hP7+kXvUKKmkYSU9H3yTKh4x4+b1Jaw=";
+    stripRoot = false;
   };
 
   # By default, when a Wine prefix is first created Wine will produce a warning prompt if Mono is not installed.
@@ -50,6 +60,8 @@ mkWindowsApp rec {
   # and wine, winetricks, and cabextract are in the environment.
   winAppInstall = ''
     ${wine}/bin/wine ${src} /VERYSILENT /SUPPRESSMSGBOXES
+    cp "${xwintab}/wintab32.dll" "$WINEPREFIX/drive_c/Program Files/Rebelle 7/"
+    cp "${xwintab}/XWinTabHelper.dll.so" "$WINEPREFIX/drive_c/Program Files/Rebelle 7/"
   '';
 
   # This code runs before winAppRun, but only for the first instance.
