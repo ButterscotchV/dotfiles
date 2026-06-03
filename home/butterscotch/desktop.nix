@@ -8,6 +8,8 @@
     vrcx
     wayvr
     insync
+    unityhub
+    alcom
   ];
 
   programs.git.signing = {
