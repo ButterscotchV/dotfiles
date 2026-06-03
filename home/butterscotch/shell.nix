@@ -41,7 +41,7 @@ in
 
     # Utility
     idea-bg = "nohup idea . >/dev/null 2>&1 &";
-    yt-dlp-auto = "yt-dlp --embed-subs --sub-lang 'en' -f bv*+ba/b";
+    yt-dlp-auto = "yt-dlp --embed-subs --sub-lang 'en' -f bv\*+ba/b";
     yt-dlp-auto-b = "yt-dlp-auto --cookies-from-browser firefox --user-agent '${userAgent}'";
     yt-dlp-audio = "yt-dlp -f ba -x";
     yt-dlp-audio-b = "yt-dlp-audio --cookies-from-browser firefox --user-agent '${userAgent}'";
