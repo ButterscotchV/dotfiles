@@ -60,8 +60,11 @@ mkWindowsApp rec {
   # and wine, winetricks, and cabextract are in the environment.
   winAppInstall = ''
     ${wine}/bin/wine ${src} /VERYSILENT /SUPPRESSMSGBOXES
-    cp "${xwintab}/wintab32.dll" "$WINEPREFIX/drive_c/Program Files/Rebelle 7/"
-    cp "${xwintab}/XWinTabHelper.dll.so" "$WINEPREFIX/drive_c/Program Files/Rebelle 7/"
+
+    SYS_DIR="$WINEPREFIX/drive_c/windows/system32/"
+    mkdir "$SYS_DIR"
+    cp "${xwintab}/wintab32.dll" "$SYS_DIR"
+    cp "${xwintab}/XWinTabHelper.dll.so" "$SYS_DIR"
   '';
 
   # This code runs before winAppRun, but only for the first instance.
@@ -77,8 +80,7 @@ mkWindowsApp rec {
   # Command line arguments are in $ARGS, not $@
   # DO NOT BLOCK. For example, don't run: wineserver -w
   winAppRun = ''
-    export WINEDLLOVERRIDES="wintab32=n,b"
-    export WINEDEBUG="+x11drv"
+    export WINEDLLOVERRIDES="wintab32=n,b;$WINEDLLOVERRIDES"
     ${wine}/bin/wine "$WINEPREFIX/drive_c/Program Files/Rebelle 7/Rebelle 7.exe" "$ARGS"
   '';
 

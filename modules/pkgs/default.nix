@@ -8,7 +8,7 @@
 {
   rebelle = pkgs.callPackage ./rebelle {
     mkWindowsApp = pkgsErosanix.mkWindowsApp;
-    wine = pkgsWine10.wineWow64Packages.stable;
+    wine = pkgsWine10.wineWow64Packages.staging;
     makeDesktopIcon = pkgsErosanix.makeDesktopIcon;
     copyDesktopIcons = pkgsErosanix.copyDesktopIcons;
   };
