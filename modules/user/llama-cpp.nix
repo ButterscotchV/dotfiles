@@ -235,25 +235,18 @@ in
     enable = true;
     redisCreateLocally = true;
     environmentFile = "/home/butterscotch/.config/searxng.env";
-    limiterSettings = {
-      botdetection = {
-        ip_limit = {
-          filter_link_local = true;
-          link_token = true;
-        };
-        ip_lists = {
-          pass_ip = [
-            "127.0.0.0/8"
-          ];
-        };
-      };
-    };
     settings = {
       server = {
         bind_address = "127.0.0.1";
         port = 31588;
         limiter = false;
         public_instance = false;
+      };
+      search = {
+        formats = [
+          "html"
+          "json"
+        ];
       };
       engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
         "brave".disabled = true;
