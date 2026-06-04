@@ -8,9 +8,6 @@
     ../../modules/user
   ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # Hostname for this system
   networking.hostName = "lamb-laptop";
 

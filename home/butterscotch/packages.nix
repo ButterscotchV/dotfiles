@@ -21,9 +21,7 @@
     # === Communication ===
     discord
     telegram-desktop
-    (stoat-desktop.override {
-      electron_38 = electron;
-    })
+    stoat-desktop
     kdePackages.kamoso
 
     # === Media ===

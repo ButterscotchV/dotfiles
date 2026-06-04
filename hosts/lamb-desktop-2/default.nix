@@ -16,9 +16,6 @@
     ../../modules/user/llama-cpp.nix
   ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # Hostname for this system
   networking.hostName = "lamb-desktop-2";
 
