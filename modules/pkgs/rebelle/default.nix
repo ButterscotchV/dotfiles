@@ -3,11 +3,11 @@
   mkWindowsApp,
   wine,
   fetchurl,
-  fetchzip,
   makeDesktopItem,
   makeDesktopIcon,
   copyDesktopItems,
   copyDesktopIcons,
+  xwintab,
 }:
 
 mkWindowsApp rec {
@@ -19,15 +19,6 @@ mkWindowsApp rec {
   src = fetchurl {
     url = "https://escapemotions1.b-cdn.net/products/rebelle/update/downloads/Rebelle_v${version}_Windows_64bit.exe";
     sha256 = "sha256-hfuhaHZhITNWpurAhVOREE/EXZAzSLLHLK6P61BCT6c=";
-  };
-
-  # https://github.com/Graham--M/XWinTab
-  # XWinTab - Tablet support for Rebelle on WINE
-  xwintabVersion = "0.5.0";
-  xwintab = fetchzip {
-    url = "https://github.com/Graham--M/XWinTab/releases/download/v${xwintabVersion}/XWinTab.v${xwintabVersion}.zip";
-    sha256 = "sha256-nZ4aiY0ys5b/hP7+kXvUKKmkYSU9H3yTKh4x4+b1Jaw=";
-    stripRoot = false;
   };
 
   # By default, when a Wine prefix is first created Wine will produce a warning prompt if Mono is not installed.
@@ -61,10 +52,11 @@ mkWindowsApp rec {
   winAppInstall = ''
     ${wine}/bin/wine ${src} /VERYSILENT /SUPPRESSMSGBOXES
 
-    SYS_DIR="$WINEPREFIX/drive_c/windows/system32/"
-    mkdir "$SYS_DIR"
-    cp "${xwintab}/wintab32.dll" "$SYS_DIR"
-    cp "${xwintab}/XWinTabHelper.dll.so" "$SYS_DIR"
+    # Symlink XWinTab DLLs to system32
+    SYS_DIR="$WINEPREFIX/drive_c/windows/system32"
+    mkdir -p "$SYS_DIR"
+    ln -sf "${xwintab}/wintab32.dll" "$SYS_DIR/"
+    ln -sf "${xwintab}/XWinTabHelper.dll.so" "$SYS_DIR/"
   '';
 
   # This code runs before winAppRun, but only for the first instance.
