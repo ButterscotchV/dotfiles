@@ -8,7 +8,7 @@
 }:
 
 let
-  steamDisplayName = "GE-Proton-rtsp 24-1";
+  steamDisplayName = "GE-Proton-rtsp 23-4";
 in
 (proton-ge-bin.override {
   inherit steamDisplayName;
@@ -16,11 +16,11 @@ in
   (
     finalAttrs: _: {
       pname = "proton-ge-rtsp-bin";
-      version = "GE-Proton10-33-rtsp24-1";
+      version = "GE-Proton10-33-rtsp23-4";
 
       src = fetchzip {
         url = "https://github.com/SpookySkeletons/proton-ge-rtsp/releases/download/${finalAttrs.version}/${finalAttrs.version}.tar.gz";
-        hash = "sha256-KVc5YXJea0eQImKUPg6eW7uSSe1e+mncB4cSBV4IKME=";
+        hash = "sha256-sP+xNPbeI1jbs081QvFmj48A/yG6IC9ZPZRvGkFZnX0=";
       };
 
       preFixup = ''
