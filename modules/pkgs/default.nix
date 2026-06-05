@@ -34,4 +34,6 @@ in
   insync-dolphin = pkgs.callPackage ./insync-dolphin {
     ECM = pkgs.kdePackages.extra-cmake-modules;
   };
+
+  proton-ge-rtsp-bin = pkgs.callPackage ./proton-ge-rtsp-bin { };
 }

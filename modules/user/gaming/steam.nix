@@ -1,4 +1,9 @@
-{ pkgs, pkgsXr, ... }:
+{
+  pkgs,
+  pkgsXr,
+  pkgsLocal,
+  ...
+}:
 
 {
   programs.steam = {
@@ -8,6 +13,7 @@
     extraCompatPackages = with pkgs; [
       proton-ge-bin
       pkgsXr.proton-ge-rtsp-bin
+      pkgsLocal.proton-ge-rtsp-bin
     ];
     package = pkgs.steam.override {
       extraProfile = ''
