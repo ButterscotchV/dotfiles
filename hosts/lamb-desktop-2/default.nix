@@ -13,7 +13,7 @@
     ../../modules/system
     ../../modules/user
     ../../modules/user/gaming/vr.nix
-    ../../modules/user/llama-cpp.nix
+    ../../modules/user/searxng.nix
   ];
 
   # Hostname for this system
