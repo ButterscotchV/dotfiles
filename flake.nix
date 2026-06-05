@@ -7,7 +7,7 @@
     # i.e. nixos-24.11
     # Use `nix flake update` to update the flake to the latest revision of the chosen release channel.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-wine-10.url = "github:NixOS/nixpkgs/f214de98544a6acf0d9917ba265ac50849048fcb";
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
@@ -33,6 +33,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    nixpkgs-proton-ge-33.url = "github:NixOS/nixpkgs/09061f748ee21f68a089cd5d91ec1859cd93d0be";
   };
 
   outputs =

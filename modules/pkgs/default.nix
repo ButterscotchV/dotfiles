@@ -2,6 +2,7 @@
   pkgs,
   pkgsErosanix,
   pkgsWine10,
+  pkgsProtonGE33,
   ...
 }:
 
@@ -35,5 +36,7 @@ in
     ECM = pkgs.kdePackages.extra-cmake-modules;
   };
 
-  proton-ge-rtsp-bin = pkgs.callPackage ./proton-ge-rtsp-bin { };
+  proton-ge-rtsp-bin = pkgs.callPackage ./proton-ge-rtsp-bin {
+    proton-ge-bin = pkgsProtonGE33.proton-ge-bin;
+  };
 }

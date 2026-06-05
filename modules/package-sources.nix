@@ -21,6 +21,10 @@ in
         inherit system;
         config.allowUnfree = true;
       };
+      pkgsProtonGE33 = import inputs.nixpkgs-proton-ge-33 {
+        inherit system;
+        config.allowUnfree = true;
+      };
     };
   };
 }
