@@ -6,8 +6,12 @@
   lib,
   proton-ge-bin,
 }:
-(proton-ge-bin.override {
+
+let
   steamDisplayName = "GE-Proton-rtsp 24-1";
+in
+(proton-ge-bin.override {
+  inherit steamDisplayName;
 }).overrideAttrs
   (
     finalAttrs: _: {
@@ -21,7 +25,7 @@
 
       preFixup = ''
         substituteInPlace "$steamcompattool/compatibilitytool.vdf" \
-          --replace-fail "${finalAttrs.version}" "GE-Proton-rtsp"
+          --replace-fail "${finalAttrs.version}" "${steamDisplayName}"
       '';
 
       meta = {
