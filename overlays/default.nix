@@ -3,11 +3,6 @@
 {
   nixpkgs.overlays = [
     (final: prev: {
-      # Workaround for openldap build failures on i686
-      # See: https://github.com/NixOS/nixpkgs/issues/514113
-      openldap = prev.openldap.overrideAttrs {
-        doCheck = !prev.stdenv.hostPlatform.isi686;
-      };
       easyeffects = prev.easyeffects.overrideAttrs {
         # Newer rnnoise model
         rnnoise =
