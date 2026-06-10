@@ -3,6 +3,7 @@
 }:
 
 {
+  # TODO: Runs as root? Can't run WayVR automatically if from autoStart
   services.wivrn = {
     enable = true;
     openFirewall = true;
