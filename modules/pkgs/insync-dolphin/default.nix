@@ -8,14 +8,14 @@
   kdePackages,
 }:
 
-stdenv.mkDerivation (finalAttrs: {
+stdenv.mkDerivation {
   pname = "insync-dolphin";
-  version = "master";
+  version = "0.0.0";
 
   src = fetchFromGitHub {
     owner = "insynchq";
     repo = "dolphin-insync-plugin";
-    rev = "master";
+    rev = "refs/heads/master";
     sha256 = "sha256-WgkfIf8RY4mO+JS2EPBFXuJNBM/TQV91uPKOjl0y9qM=";
   };
 
@@ -41,4 +41,4 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/insynchq/dolphin-insync-plugin";
     description = "Dolphin integration for Insync";
   };
-})
+}
