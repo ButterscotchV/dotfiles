@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   # Enable XWayland for X11 compatibility
@@ -22,4 +22,9 @@
 
   # Run Chromium and Electron stuff in Wayland native mode
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  # Enable clipboard sharing
+  environment.systemPackages = with pkgs; [
+    wl-clipboard
+  ];
 }
