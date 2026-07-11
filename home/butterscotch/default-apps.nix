@@ -11,6 +11,7 @@
       "text/css" = "code.desktop";
       "text/typescript" = "code.desktop";
       "text/x-kotlin" = "code.desktop";
+      "application/yaml" = "code.desktop";
     };
   };
 }
