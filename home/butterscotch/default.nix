@@ -77,11 +77,6 @@
     nativeMessagingHosts = [ pkgs.kdePackages.plasma-browser-integration ];
   };
 
-  programs.ssh = {
-    enable = true;
-    enableDefaultConfig = false;
-  };
-
   programs.obs-studio = {
     enable = true;
 
