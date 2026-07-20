@@ -88,7 +88,7 @@ mkWindowsApp rec {
   installPhase = ''
     runHook preInstall
 
-    mv $out/bin/.launcher $out/bin/${pname}
+    ln -s $out/bin/.launcher $out/bin/${pname}
 
     runHook postInstall
   '';
