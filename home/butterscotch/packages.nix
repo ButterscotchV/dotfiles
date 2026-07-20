@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgsLocal,
+  pkgsErosanix,
   ...
 }:
 
@@ -111,6 +112,7 @@
     kdePackages.filelight
     kdePackages.partitionmanager
     mission-center
+    pkgsErosanix.mkwindowsapp-tools
     qdirstat
     resources
   ];

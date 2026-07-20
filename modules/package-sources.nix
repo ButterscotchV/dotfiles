@@ -14,9 +14,10 @@ in
       config.allowUnfree = true;
     };
     pkgsXr = inputs.nixpkgs-xr.packages.${system};
+    pkgsErosanix = inputs.erosanix.packages.${system};
     pkgsLocal = import ./pkgs {
       inherit pkgs;
-      pkgsErosanix = inputs.erosanix.lib.${system};
+      libErosanix = inputs.erosanix.lib.${system};
       pkgsWine10 = import inputs.nixpkgs-wine-10 {
         inherit system;
         config.allowUnfree = true;
