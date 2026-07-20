@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0";
+  userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:152.0) Gecko/20100101 Firefox/152.0";
 in
 {
   # starship - Customizable prompt for any shell
@@ -19,12 +19,12 @@ in
     oh-my-zsh = {
       enable = true;
       plugins = [
-        "git"
-        "python"
-        "man"
-        "gradle"
-        "docker"
         "docker-compose"
+        "docker"
+        "git"
+        "gradle"
+        "man"
+        "python"
       ];
     };
   };
@@ -39,11 +39,13 @@ in
     nixos-clean = "nix-collect-garbage -d && sudo nix-collect-garbage -d && nix store optimise";
     nixos-repair = "sudo nix-store --verify --check-contents --repair";
 
-    # Utility
-    idea-bg = "nohup idea . >/dev/null 2>&1 &";
+    # yt-dlp
     yt-dlp-auto = "yt-dlp --embed-metadata --embed-subs --sub-lang 'en' -f bv\\*+ba/b";
     yt-dlp-auto-b = "yt-dlp-auto --cookies-from-browser firefox --user-agent '${userAgent}'";
     yt-dlp-audio = "yt-dlp --embed-metadata -f ba -x";
     yt-dlp-audio-b = "yt-dlp-audio --cookies-from-browser firefox --user-agent '${userAgent}'";
+
+    # Utility
+    idea-bg = "nohup idea . >/dev/null 2>&1 &";
   };
 }

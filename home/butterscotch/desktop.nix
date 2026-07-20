@@ -5,11 +5,11 @@
 
 {
   home.packages = with pkgs; [
-    vrcx
-    wayvr
+    alcom
     insync
     unityhub
-    alcom
+    vrcx
+    wayvr
   ];
 
   programs.git.signing = {

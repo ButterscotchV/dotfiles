@@ -17,8 +17,8 @@
 
   # Add Brother printer drivers
   services.printing.drivers = [
-    pkgs.brlaser
-    pkgs.brgenml1lpr
     pkgs.brgenml1cupswrapper
+    pkgs.brgenml1lpr
+    pkgs.brlaser
   ];
 }

@@ -11,7 +11,7 @@
     localNetworkGameTransfers.openFirewall = true;
     extraCompatPackages = with pkgs; [
       proton-ge-bin
-      pkgsXr.proton-ge-rtsp-bin
+      pkgsXr.proton-rtsp-bin
     ];
     package = pkgs.steam.override {
       extraProfile = ''

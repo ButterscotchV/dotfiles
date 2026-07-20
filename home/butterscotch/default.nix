@@ -46,24 +46,24 @@
     package = pkgs.vscode.fhsWithPackages (
       ps: with ps; [
         cargo
-        rustc
-        rustup
-        zlib
-        openssl.dev
-        pkg-config
-        temurin-bin-17
-        temurin-bin-21
-        nodejs
-        mono
-        dotnet-sdk_8
-        dotnet-sdk_9
-        dotnet-sdk_10
-        dotnet-sdk_11
-        dotnet-aspnetcore_8
-        dotnet-aspnetcore_9
         dotnet-aspnetcore_10
         dotnet-aspnetcore_11
+        dotnet-aspnetcore_8
+        dotnet-aspnetcore_9
+        dotnet-sdk_10
+        dotnet-sdk_11
+        dotnet-sdk_8
+        dotnet-sdk_9
+        mono
+        nodejs
+        openssl.dev
+        pkg-config
         python3
+        rustc
+        rustup
+        temurin-bin-17
+        temurin-bin-21
+        zlib
       ]
     );
   };
@@ -81,12 +81,12 @@
     enable = true;
 
     plugins = with pkgs.obs-studio-plugins; [
-      wlrobs
       obs-backgroundremoval
       obs-pipewire-audio-capture
-      #optional AMD hardware acceleration
-      obs-vaapi
+      wlrobs
+      # Optional AMD hardware acceleration
       obs-gstreamer
+      obs-vaapi
       obs-vkcapture
     ];
   };

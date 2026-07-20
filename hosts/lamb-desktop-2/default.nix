@@ -13,7 +13,6 @@
     ../../modules/system
     ../../modules/user
     ../../modules/user/gaming/vr.nix
-    ../../modules/user/searxng.nix
   ];
 
   # Hostname for this system

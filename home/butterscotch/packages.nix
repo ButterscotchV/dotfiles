@@ -107,7 +107,7 @@
     # === Networking ===
     proton-vpn
 
-    # === PC monitoring ===
+    # === PC monitoring/management ===
     kdePackages.filelight
     kdePackages.partitionmanager
     mission-center

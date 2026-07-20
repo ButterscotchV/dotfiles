@@ -2,10 +2,12 @@
 
 {
   environment.systemPackages = with pkgs; [
-    openssh
+    curl
     dos2unix
     git
-    wget
+    nano
+    openssh
     vim
+    wget
   ];
 }
