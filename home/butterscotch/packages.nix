@@ -46,6 +46,7 @@
     pkgsLocal.pingo
     kdePackages.kdenlive
     yt-dlp
+    inkscape
 
     # === CD Ripping ===
     kdePackages.audiocd-kio
