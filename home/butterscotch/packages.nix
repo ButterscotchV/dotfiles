@@ -7,85 +7,91 @@
 {
   home.packages = with pkgs; [
     # === Archive ===
-    p7zip # 7z
+    p7zip
     unzip
     xz
     zip
 
     # === Audio ===
-    pwvucontrol
     audacity
     kdePackages.kwave
     kid3-kde
+    pwvucontrol
 
     # === Communication ===
     discord
-    telegram-desktop
     stoat-desktop
-    kdePackages.kamoso
+    telegram-desktop
 
     # === Media ===
-    krita
+    pkgsRocm.blender
+    ffmpeg
+    handbrake
+    kdePackages.kamoso
+    kdePackages.kdenlive
+    plexamp
     (plex-desktop.override {
       extraEnv = {
         QT_STYLE_OVERRIDE = "default";
       };
     })
-    plexamp
-    vlc
-    spotify
     qbittorrent
-    ffmpeg
-    handbrake
-    pkgsRocm.blender
-    pkgsLocal.rebelle
+    spotify
+    vlc
+    yt-dlp
+
+    # === Art/image editing ===
     affinity-v3
-    gimp
     darktable
+    gimp
+    imagemagick
+    inkscape
+    krita
     pkgsLocal.pinga
     pkgsLocal.pingo
-    kdePackages.kdenlive
-    yt-dlp
-    inkscape
+    pkgsLocal.rebelle
 
-    # === CD Ripping ===
+    # === CD ripping ===
     kdePackages.audiocd-kio
     cyanrip
 
     # === Office ===
-    libreoffice-qt
-    hunspell # For LibreOffice
-    hyphenDicts.en_US # For LibreOffice
-    onlyoffice-desktopeditors
-    kdePackages.skanpage
+    hunspell # Spellchecking for LibreOffice
+    hyphenDicts.en_CA
+    hyphenDicts.en_US
     kdePackages.skanlite
+    kdePackages.skanpage
+    libreoffice-qt
+    onlyoffice-desktopeditors
 
     # === Security ===
     bitwarden-desktop
     kdePackages.kleopatra # GPG GUI
 
     # === Runtimes ===
-    bottles
-    wineWow64Packages.staging
+    # Bottles is not building rn and I don't use it - 2026-07-20
+    # bottles
     winetricks
+    wineWow64Packages.staging
 
     # === Desktop, shell, and appearance ===
-    nerd-fonts.fira-code
     displaycal
     kdePackages.kfind
     kdePackages.plasma-sdk
+    nerd-fonts.fira-code
 
     # === Development ===
     git-credential-manager
     github-desktop
-    jq # JSON processor
-    nix-output-monitor # nom
-    nixfmt
-    nixd
-    nixdoc
     jetbrains.idea
+    jq # JSON processor
+    nixd # Nix language server
+    nixdoc
+    nixfmt
 
     # === Gaming ===
+    moonlight-qt
+    owmods-gui
     (prismlauncher.override {
       additionalPrograms = [ ffmpeg ];
       jdks = [
@@ -95,19 +101,17 @@
         temurin-jre-bin-25
       ];
     })
-    slimevr
-    moonlight-qt
     r2modman
-    owmods-gui
+    slimevr
 
     # === Networking ===
     proton-vpn
 
-    # === PC Monitoring ===
-    mission-center
-    resources
+    # === PC monitoring ===
     kdePackages.filelight
-    qdirstat
     kdePackages.partitionmanager
+    mission-center
+    qdirstat
+    resources
   ];
 }
