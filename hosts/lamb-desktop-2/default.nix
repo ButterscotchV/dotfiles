@@ -1,6 +1,5 @@
 {
   pkgsLocal,
-  lib,
   ...
 }:
 
@@ -12,6 +11,7 @@
     ./storage.nix
     ../../modules/system
     ../../modules/user
+    ../../modules/user/plex.nix
     ../../modules/user/gaming/vr.nix
   ];
 
@@ -27,13 +27,6 @@
     initrd.enable = true;
     opencl.enable = true;
   };
-
-  services.plex = {
-    enable = true;
-    openFirewall = true;
-    user = "butterscotch";
-  };
-  systemd.services.plex.serviceConfig.ProtectHome = lib.mkForce false;
 
   environment.systemPackages = [
     pkgsLocal.insync-dolphin
