@@ -5,11 +5,16 @@
 
 {
   home.packages = with pkgs; [
-    alcom
+    # === File management/sync ===
     insync
+
+    # === VR ===
+    wayvr
+
+    # === VRChat ===
+    alcom
     unityhub
     vrcx
-    wayvr
   ];
 
   programs.git.signing = {

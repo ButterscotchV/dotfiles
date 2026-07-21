@@ -48,12 +48,8 @@
         cargo
         dotnet-aspnetcore_10
         dotnet-aspnetcore_11
-        dotnet-aspnetcore_8
-        dotnet-aspnetcore_9
         dotnet-sdk_10
         dotnet-sdk_11
-        dotnet-sdk_8
-        dotnet-sdk_9
         mono
         nodejs
         openssl.dev
@@ -63,6 +59,7 @@
         rustup
         temurin-bin-17
         temurin-bin-21
+        temurin-bin-25
         zlib
       ]
     );

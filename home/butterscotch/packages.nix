@@ -31,11 +31,7 @@
     kdePackages.kamoso
     kdePackages.kdenlive
     plexamp
-    (plex-desktop.override {
-      extraEnv = {
-        QT_STYLE_OVERRIDE = "default";
-      };
-    })
+    plex-desktop
     qbittorrent
     spotify
     vlc
