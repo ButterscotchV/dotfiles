@@ -18,7 +18,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-38.8.4"
     "electron-39.8.10"
   ];
 
@@ -38,7 +37,9 @@
     binfmt = true;
   };
 
-  # Power configuration
+  programs.nix-ld.enable = true;
+
+  # === Power configuration ===
   # Disable default power profiles
   services.power-profiles-daemon.enable = false;
   # Enable auto-cpufreq instead
