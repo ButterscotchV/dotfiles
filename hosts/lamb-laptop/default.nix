@@ -11,6 +11,14 @@
   # Hostname for this system
   networking.hostName = "lamb-laptop";
 
+  nix.settings = {
+    substituters = [ "https://lamb-desktop-2.tail11fc37.ts.net:49023" ];
+    # Replace the key with the content of /var/lib/secrets/harmonia.pub
+    trusted-public-keys = [
+      "lamb-desktop-2.tail11fc37.ts.net-1:7OhqMX9zIX9XKSPmLa5Nj9U2VEU5ofidi0PRYIL6hH4="
+    ];
+  };
+
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #

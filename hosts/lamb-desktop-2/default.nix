@@ -11,6 +11,7 @@
     ./storage.nix
     ../../modules/system
     ../../modules/user
+    ../../modules/user/harmonia.nix
     ../../modules/user/plex.nix
     ../../modules/user/gaming/vr.nix
   ];
