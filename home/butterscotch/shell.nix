@@ -45,7 +45,7 @@ in
     yt-dlp-audio = "yt-dlp --embed-metadata -f ba -x";
     yt-dlp-audio-b = "yt-dlp-audio --cookies-from-browser firefox --user-agent '${userAgent}'";
 
-    # Utility
+    # Run IntelliJ IDEA in the background
     idea-bg = "nohup idea . >/dev/null 2>&1 &";
   };
 }
