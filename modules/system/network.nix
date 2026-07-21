@@ -1,13 +1,21 @@
-{ ... }:
+{ config, ... }:
 
 {
   networking = {
+    # === WiFi ===
     networkmanager.enable = true;
     wireless.iwd.enable = true;
     networkmanager.wifi.backend = "iwd";
-    firewall.enable = true;
-    nftables.enable = true;
 
+    # === Firewall ===
+    nftables.enable = true;
+    firewall = {
+      enable = true;
+      # Always allow traffic from your Tailscale network
+      trustedInterfaces = [ config.services.tailscale.interfaceName ];
+    };
+
+    # === DNS ===
     nameservers = [
       "1.1.1.1"
       "1.0.0.1"
@@ -25,6 +33,12 @@
 
   services.tailscale = {
     enable = true;
+    openFirewall = true;
     useRoutingFeatures = "client";
   };
+  # Force tailscaled to use nftables (Critical for clean nftables-only systems)
+  # This avoids the "iptables-compat" translation layer issues.
+  systemd.services.tailscaled.serviceConfig.Environment = [
+    "TS_DEBUG_FIREWALL_MODE=nftables"
+  ];
 }
