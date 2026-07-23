@@ -15,8 +15,9 @@
     ./virtualisation.nix
   ];
 
-  # Allow unfree packages
+  # Configure allowed Nix packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.segger-jlink.acceptLicense = true;
   nixpkgs.config.permittedInsecurePackages = [
     "electron-39.8.10"
   ];

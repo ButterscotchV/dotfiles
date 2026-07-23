@@ -85,6 +85,7 @@
     nixd # Nix language server
     nixdoc
     nixfmt
+    nrfconnect
 
     # === Gaming ===
     moonlight-qt
