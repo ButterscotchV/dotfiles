@@ -36,13 +36,14 @@
     polkit.enable = true;
   };
 
-  # AppImage binary format support
+  # Binary app support
   programs.appimage = {
     enable = true;
     binfmt = true;
   };
-
   programs.nix-ld.enable = true;
+
+  services.flatpak.enable = true;
 
   # === Power configuration ===
   # Disable default power profiles
@@ -59,6 +60,4 @@
       turbo = "auto";
     };
   };
-
-  services.flatpak.enable = true;
 }
