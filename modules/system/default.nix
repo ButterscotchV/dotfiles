@@ -22,6 +22,10 @@
     "electron-39.8.10"
   ];
 
+  # Firmware
+  hardware.enableAllFirmware = true;
+  services.fwupd.enable = true;
+
   # Shell configuration
   programs.zsh.enable = true;
 

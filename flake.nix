@@ -101,6 +101,8 @@
             common-gpu-nvidia-disable
             common-pc
             common-pc-ssd
+            "${nixos-hardware}/common/wifi/mediatek/mt7925"
+            "${nixos-hardware}/common/wifi/mediatek/mt7925/iwd.nix"
           ];
         };
       };
