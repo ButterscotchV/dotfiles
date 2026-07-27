@@ -37,7 +37,7 @@
       nixos-switch = "nixos-rebuild switch --sudo";
       nixos-boot = "nixos-rebuild boot --sudo";
       nixos-size = "nix path-info --json --all --json-format 1 | jq 'map(.narSize) | add' | numfmt --to=iec-i --suffix=B";
-      nixos-clean = "nix-collect-garbage -d && sudo nix-collect-garbage -d && nix store optimise";
+      nixos-clean = "nix-collect-garbage -d && sudo nix-collect-garbage -d && nix store optimise && mkwindows-tools-gc";
       nixos-repair = "sudo nix-store --verify --check-contents --repair";
 
       # yt-dlp
