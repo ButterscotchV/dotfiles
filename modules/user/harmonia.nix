@@ -2,7 +2,7 @@
 
 let
   keyPath = "/var/lib/harmonia/lamb-desktop-2.tail11fc37.ts.net-1.secret";
-  tlsKeyPath = "/var/lib/certs/lamb-desktop-2.tail11fc37.ts.net.key";
+  tlsKeyPath = "/var/lib/harmonia/lamb-desktop-2.tail11fc37.ts.net.key";
 in
 {
   # From https://github.com/basnijholt/dotfiles/blob/main/configs/nixos/hosts/nix-cache/harmonia.nix
