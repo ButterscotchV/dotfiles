@@ -109,6 +109,7 @@
     kdePackages.filelight
     kdePackages.partitionmanager
     mission-center
+    nix-tree
     pkgsErosanix.mkwindowsapp-tools
     qdirstat
     resources
