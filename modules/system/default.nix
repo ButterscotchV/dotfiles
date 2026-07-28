@@ -45,6 +45,8 @@
 
   services.flatpak.enable = true;
 
+  programs.partition-manager.enable = true;
+
   # === Power configuration ===
   # Disable default power profiles
   services.power-profiles-daemon.enable = false;
