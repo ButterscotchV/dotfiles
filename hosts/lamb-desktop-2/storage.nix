@@ -1,7 +1,7 @@
 {
   fileSystems."/run/media/butterscotch/Fast Storage" = {
-    device = "/dev/disk/by-uuid/01D92E29F0340C60";
-    fsType = "ntfs3";
+    device = "/dev/disk/by-uuid/e4bddff2-61a0-4069-b830-460c234a55ba";
+    fsType = "ext4";
     options = [ "nofail" ];
   };
   fileSystems."/run/media/butterscotch/Slow Storage" = {
