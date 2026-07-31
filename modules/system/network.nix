@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   networking = {
@@ -13,6 +13,9 @@
       enable = true;
       # Always allow traffic from your Tailscale network
       trustedInterfaces = [ config.services.tailscale.interfaceName ];
+      # Fix ProtonVPN connecting
+      # NixOS firewall will block wg traffic because of rpfilter
+      checkReversePath = lib.mkForce false;
     };
 
     # === DNS ===
