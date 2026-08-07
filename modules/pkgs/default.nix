@@ -8,8 +8,6 @@ let
   xwintab = pkgs.callPackage ./xwintab { };
 in
 {
-  inherit xwintab;
-
   rebelle = pkgs.callPackage ./rebelle {
     inherit xwintab;
     mkWindowsApp = libErosanix.mkWindowsApp;
