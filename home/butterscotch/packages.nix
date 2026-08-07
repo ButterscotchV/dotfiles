@@ -101,6 +101,7 @@
 
     # === PC monitoring/management ===
     kdePackages.filelight
+    kdePackages.ksystemlog
     mission-center
     nix-tree
     pkgsErosanix.mkwindowsapp-tools
