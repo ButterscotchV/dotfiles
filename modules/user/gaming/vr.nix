@@ -27,12 +27,12 @@
   # Tracker server: 6969/UDP
   # Tracker OTA server: 8266/UDP/TCP
   # GUI: 21110/TCP (local)
-  networking = {
-    firewall.allowedUDPPorts = [
+  networking.firewall = {
+    allowedUDPPorts = [
       6969
       8266
     ];
-    firewall.allowedTCPPorts = [
+    allowedTCPPorts = [
       8266
     ];
   };
