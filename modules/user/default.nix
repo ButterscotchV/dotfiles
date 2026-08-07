@@ -15,6 +15,7 @@
       "audio"
       "dialout"
       "docker"
+      "gamemode"
       "networkmanager"
       "video"
       "wheel"

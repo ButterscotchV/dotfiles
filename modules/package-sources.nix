@@ -9,14 +9,18 @@ let
 in
 {
   _module.args = {
-    pkgsFast = import inputs.nixpkgs-fast {
-      inherit system;
-      config.allowUnfree = true;
-    };
     # pkgsStable = import inputs.nixpkgs-stable {
     #   inherit system;
     #   config.allowUnfree = true;
     # };
+    pkgsFast = import inputs.nixpkgs-fast {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    pkgsKernel7_1_5 = import inputs.nixpkgs-kernel-7_1_5 {
+      inherit system;
+      config.allowUnfree = true;
+    };
     pkgsXr = inputs.nixpkgs-xr.packages.${system};
     pkgsErosanix = inputs.erosanix.packages.${system};
     pkgsLocal = import ./pkgs {
