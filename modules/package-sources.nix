@@ -18,10 +18,6 @@ in
     pkgsLocal = import ./pkgs {
       inherit pkgs;
       libErosanix = inputs.erosanix.lib.${system};
-      pkgsWine10 = import inputs.nixpkgs-wine-10 {
-        inherit system;
-        config.allowUnfree = true;
-      };
     };
   };
 }

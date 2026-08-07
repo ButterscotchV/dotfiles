@@ -1,7 +1,6 @@
 {
   pkgs,
   libErosanix,
-  pkgsWine10,
   ...
 }:
 
@@ -14,7 +13,7 @@ in
   rebelle = pkgs.callPackage ./rebelle {
     inherit xwintab;
     mkWindowsApp = libErosanix.mkWindowsApp;
-    wine = pkgsWine10.wineWow64Packages.staging;
+    wine = pkgs.wineWow64Packages.staging;
     makeDesktopIcon = libErosanix.makeDesktopIcon;
     copyDesktopIcons = libErosanix.copyDesktopIcons;
   };
