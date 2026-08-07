@@ -24,10 +24,9 @@
     enable = true;
     enable32Bit = true;
   };
-  hardware.amdgpu = {
-    initrd.enable = true;
-    opencl.enable = true;
-  };
+  # This option is already set by nixos-hardware#common-gpu-amd
+  # hardware.amdgpu.initrd.enable = lib.mkDefault true;
+  hardware.amdgpu.opencl.enable = true;
 
   environment.systemPackages = [
     pkgsLocal.insync-dolphin
