@@ -65,12 +65,6 @@
     bitwarden-desktop
     kdePackages.kleopatra # GPG GUI
 
-    # === Runtimes ===
-    # Bottles is not building rn and I don't use it - 2026-07-20
-    # bottles
-    winetricks
-    wineWow64Packages.staging
-
     # === Desktop, shell, and appearance ===
     displaycal
     kdePackages.kfind

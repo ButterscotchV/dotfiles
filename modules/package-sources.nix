@@ -13,10 +13,10 @@ in
       inherit system;
       config.allowUnfree = true;
     };
-    pkgsStable = import inputs.nixpkgs-stable {
-      inherit system;
-      config.allowUnfree = true;
-    };
+    # pkgsStable = import inputs.nixpkgs-stable {
+    #   inherit system;
+    #   config.allowUnfree = true;
+    # };
     pkgsXr = inputs.nixpkgs-xr.packages.${system};
     pkgsErosanix = inputs.erosanix.packages.${system};
     pkgsLocal = import ./pkgs {
