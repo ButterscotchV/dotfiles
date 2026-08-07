@@ -1,5 +1,6 @@
 {
   pkgsLocal,
+  pkgsFast,
   ...
 }:
 
@@ -23,6 +24,10 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    # For Mesa 26.2.0, currently on 26.1.6 and it seems buggy asf,
+    #  been having a lot of crashing of plasmashell and stuff - 2026-08-07
+    package = pkgsFast.mesa;
+    package32 = pkgsFast.pkgsi686Linux.mesa;
   };
   # This option is already set by nixos-hardware#common-gpu-amd
   # hardware.amdgpu.initrd.enable = lib.mkDefault true;

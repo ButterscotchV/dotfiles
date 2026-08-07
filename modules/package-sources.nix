@@ -9,6 +9,10 @@ let
 in
 {
   _module.args = {
+    pkgsFast = import inputs.nixpkgs-fast {
+      inherit system;
+      config.allowUnfree = true;
+    };
     pkgsStable = import inputs.nixpkgs-stable {
       inherit system;
       config.allowUnfree = true;
