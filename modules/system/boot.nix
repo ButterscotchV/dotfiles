@@ -12,6 +12,7 @@
       device = "nodev";
       useOSProber = true;
       default = "saved";
+      memtest86.enable = true;
     };
   };
 
