@@ -107,5 +107,8 @@
     pkgsErosanix.mkwindowsapp-tools
     qdirstat
     resources
+
+    # === Browsers ===
+    google-chrome
   ];
 }
