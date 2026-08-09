@@ -8,8 +8,9 @@
     # Use `nix flake update` to update the flake to the latest revision of the chosen release channel.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
-    nixpkgs-fast.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    # nixpkgs-fast.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nixpkgs-kernel-7_1_5.url = "github:NixOS/nixpkgs/685adc7c821a10a4873193829b33e376eb9ffde0";
+    nixpkgs-mesa-26_1_3.url = "github:NixOS/nixpkgs/9e92285f211dad236540fd617d7e30e0b99bc0e1";
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -294,22 +294,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-fast": {
-      "locked": {
-        "lastModified": 1786074909,
-        "narHash": "sha256-RXBE0mNKb5O4g5PR6iV43/A0qkibe2MSZ+DDvRS4ELs=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "5738b3c785613e0f8e0d94662dd5542188bb4dc2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable-small",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-kernel-7_1_5": {
       "locked": {
         "lastModified": 1785757098,
@@ -338,6 +322,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixpkgs-mesa-26_1_3": {
+      "locked": {
+        "lastModified": 1782948114,
+        "narHash": "sha256-AXmz9ho4Lud5CsbrZsuSVwpQZ4o5FgZ1chxBn5cJ8+0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9e92285f211dad236540fd617d7e30e0b99bc0e1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9e92285f211dad236540fd617d7e30e0b99bc0e1",
         "type": "github"
       }
     },
@@ -522,8 +522,8 @@
         "nix-flatpak": "nix-flatpak",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-fast": "nixpkgs-fast",
         "nixpkgs-kernel-7_1_5": "nixpkgs-kernel-7_1_5",
+        "nixpkgs-mesa-26_1_3": "nixpkgs-mesa-26_1_3",
         "nixpkgs-xr": "nixpkgs-xr",
         "plasma-manager": "plasma-manager"
       }
