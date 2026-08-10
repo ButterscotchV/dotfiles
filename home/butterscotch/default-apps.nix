@@ -1,17 +1,30 @@
 { ... }:
 
+let
+  text = "code.desktop";
+  video = "haruna.desktop";
+in
 {
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "text/plain" = "code.desktop";
-      "application/json" = "code.desktop";
-      "text/markdown" = "code.desktop";
-      "text/javascript" = "code.desktop";
-      "text/css" = "code.desktop";
-      "text/typescript" = "code.desktop";
-      "text/x-kotlin" = "code.desktop";
-      "application/yaml" = "code.desktop";
+      # Text
+      "application/json" = text;
+      "application/yaml" = text;
+      "text/css" = text;
+      "text/javascript" = text;
+      "text/markdown" = text;
+      "text/plain" = text;
+      "text/typescript" = text;
+      "text/x-kotlin" = text;
+
+      # Video
+      "video/mp2t" = video;
+      "video/mp4" = video;
+      "video/mpeg" = video;
+      "video/ogg" = video;
+      "video/webm" = video;
+      "video/x-msvideo" = video;
     };
   };
 }

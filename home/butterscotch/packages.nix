@@ -25,13 +25,14 @@
     telegram-desktop
 
     # === Media ===
-    pkgsRocm.blender
     ffmpeg
     handbrake
+    haruna
     kdePackages.kamoso
     kdePackages.kdenlive
-    plexamp
+    pkgsRocm.blender
     plex-desktop
+    plexamp
     qbittorrent
     spotify
     vlc
