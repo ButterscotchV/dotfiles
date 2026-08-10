@@ -21,7 +21,7 @@ in
       inherit system;
       config.allowUnfree = true;
     };
-    pkgsMesa26_1_3 = import inputs.nixpkgs-mesa-26_1_3 {
+    pkgsMesa26_1_2 = import inputs.nixpkgs-mesa-26_1_2 {
       inherit system;
       config.allowUnfree = true;
     };

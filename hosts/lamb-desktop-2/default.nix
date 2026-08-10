@@ -1,6 +1,6 @@
 {
   pkgsLocal,
-  pkgsMesa26_1_3,
+  pkgsMesa26_1_2,
   ...
 }:
 
@@ -28,8 +28,9 @@
     #  buggy asf, been having a lot of crashing of plasmashell and stuff
     # 2026-08-08: Mesa 26.2.0 seems to be even worse and crashes Firefox
     #  and Chromium apps a ton, so I'm trying 26.1.3 now
-    package = pkgsMesa26_1_3.mesa;
-    package32 = pkgsMesa26_1_3.pkgsi686Linux.mesa;
+    # 2026-08-10: Mesa 26.1.3 is also crashing, so I'm going back to 26.1.2
+    package = pkgsMesa26_1_2.mesa;
+    package32 = pkgsMesa26_1_2.pkgsi686Linux.mesa;
   };
   # This option is already set by nixos-hardware#common-gpu-amd
   # hardware.amdgpu.initrd.enable = lib.mkDefault true;
