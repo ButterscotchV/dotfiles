@@ -57,6 +57,7 @@
         python3
         rustc
         rustup
+        shfmt
         temurin-bin-17
         temurin-bin-21
         temurin-bin-25
