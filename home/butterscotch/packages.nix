@@ -2,6 +2,7 @@
   pkgs,
   pkgsLocal,
   pkgsErosanix,
+  pkgsStable,
   ...
 }:
 
@@ -51,7 +52,7 @@
 
     # === CD ripping ===
     kdePackages.audiocd-kio
-    cyanrip
+    pkgsStable.cyanrip
 
     # === Office ===
     hunspell # Spellchecking for LibreOffice
