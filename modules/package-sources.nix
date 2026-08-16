@@ -17,10 +17,6 @@ in
     #   inherit system;
     #   config.allowUnfree = true;
     # };
-    pkgsKernel7_1_5 = import inputs.nixpkgs-kernel-7_1_5 {
-      inherit system;
-      config.allowUnfree = true;
-    };
     pkgsMesa26_1_2 = import inputs.nixpkgs-mesa-26_1_2 {
       inherit system;
       config.allowUnfree = true;

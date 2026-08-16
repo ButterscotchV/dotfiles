@@ -1,4 +1,4 @@
-{ pkgsKernel7_1_5, ... }:
+{ pkgs, ... }:
 
 {
   # Configure grub
@@ -17,5 +17,5 @@
   };
 
   # Select the latest Linux kernel
-  boot.kernelPackages = pkgsKernel7_1_5.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }
