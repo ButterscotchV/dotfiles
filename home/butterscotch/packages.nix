@@ -40,7 +40,8 @@
     yt-dlp
 
     # === Art/image editing ===
-    affinity-v3
+    # TEMP 2026-08-16: Affinity is not downloading correctly
+    # affinity-v3
     darktable
     gimp
     imagemagick
@@ -52,6 +53,7 @@
 
     # === CD ripping ===
     kdePackages.audiocd-kio
+    # TEMP 2026-08-16: Cyanrip fails to build
     pkgsStable.cyanrip
 
     # === Office ===
