@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ inputs, pkgsXr, ... }:
 
 {
   nixpkgs.overlays = [
@@ -22,19 +22,13 @@
             };
       };
       # Patch xrizer for BigWalkVR
-      xrizer = prev.xrizer.overrideAttrs {
+      xrizer = pkgsXr.xrizer.overrideAttrs {
         src = prev.fetchFromGitHub {
           owner = "exstrim401";
           repo = "xrizer";
           rev = "47031c3abbfd55f49379d4c8764c80a759a5b095";
           sha256 = "sha256-z8v8s7AK/Z+acsYHx66h0dMNG1qcR/J7g3ynKMxWpNA=";
         };
-        postPatch = ''
-          substituteInPlace Cargo.toml \
-            --replace-fail 'static-openxr = ["openxr/static"]' 'linked-openxr = ["openxr/linked"]'
-          substituteInPlace src/graphics_backends/gl.rs \
-            --replace-fail 'libGLX.so.0' '${lib.getLib prev.libGL}/lib/libGLX.so.0'
-        '';
       };
     })
     inputs.affinity-nix.overlays.default
