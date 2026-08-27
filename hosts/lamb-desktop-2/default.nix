@@ -1,6 +1,6 @@
 {
   pkgsLocal,
-  pkgsFast,
+  pkgsMesa26_1_2,
   ...
 }:
 
@@ -29,8 +29,9 @@
     # Mesa 26.1.3: Also crashing occasionally
     # Mesa 26.1.2: Working well, Steam crashes occasionally, may be unrelated
     # 2026-08-20: Mesa 26.2.1 got some promising updates, trying it now
-    package = pkgsFast.mesa;
-    package32 = pkgsFast.pkgsi686Linux.mesa;
+    # 2026-08-27: Reverted to Mesa 26.1.2
+    package = pkgsMesa26_1_2.mesa;
+    package32 = pkgsMesa26_1_2.pkgsi686Linux.mesa;
   };
   # This option is already set by nixos-hardware#common-gpu-amd
   # hardware.amdgpu.initrd.enable = lib.mkDefault true;
