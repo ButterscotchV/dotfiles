@@ -40,8 +40,7 @@
     yt-dlp
 
     # === Art/image editing ===
-    # TEMP 2026-08-16: Affinity is not downloading correctly
-    # affinity-v3
+    affinity-v3
     darktable
     gimp
     imagemagick
