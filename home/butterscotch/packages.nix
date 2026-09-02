@@ -53,6 +53,7 @@
     # === CD ripping ===
     kdePackages.audiocd-kio
     # TEMP 2026-08-16: Cyanrip fails to build
+    # https://github.com/NixOS/nixpkgs/issues/557913
     pkgsStable.cyanrip
 
     # === Office ===
