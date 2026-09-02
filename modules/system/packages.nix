@@ -10,10 +10,4 @@
     vim
     wget
   ];
-
-  # Macro software
-  services.crossmacro = {
-    enable = true;
-    users = [ "butterscotch" ];
-  };
 }

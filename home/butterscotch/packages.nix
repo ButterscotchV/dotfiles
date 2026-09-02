@@ -66,7 +66,6 @@
     onlyoffice-desktopeditors
 
     # === Security ===
-    bitwarden-desktop
     kdePackages.kleopatra # GPG GUI
 
     # === Desktop, shell, and appearance ===
