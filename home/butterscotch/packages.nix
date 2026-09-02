@@ -26,6 +26,7 @@
     telegram-desktop
 
     # === Media ===
+    ab-av1
     ffmpeg
     handbrake
     haruna
