@@ -1,5 +1,6 @@
 {
   pkgs,
+  wivrnSolarXR,
   ...
 }:
 
@@ -8,6 +9,7 @@
   #  Edit: I've added WayVR to this service's config, see if that works! - 2026-07-20
   services.wivrn = {
     enable = true;
+    package = wivrnSolarXR;
     openFirewall = true;
 
     # Run WiVRn as a systemd service on startup

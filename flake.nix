@@ -34,6 +34,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/latest";
+    wivrn-solarxr = {
+      url = "github:WiVRn/WiVRn/sapphire/solarxr-rewrite";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

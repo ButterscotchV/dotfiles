@@ -27,5 +27,6 @@ in
       inherit pkgs;
       libErosanix = inputs.erosanix.lib.${system};
     };
+    wivrnSolarXR = inputs.wivrn-solarxr.packages.${system}.default;
   };
 }
