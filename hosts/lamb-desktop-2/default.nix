@@ -1,6 +1,6 @@
 {
   pkgsLocal,
-  pkgsMesa26_1_2,
+  pkgsFast,
   ...
 }:
 
@@ -24,14 +24,11 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    # Mesa 26.1.6: Crashes plasmashell and Chromium apps
-    # Mesa 26.2.0: Seems worse and crashes Firefox and Chromium apps
-    # Mesa 26.1.3: Also crashing occasionally
-    # Mesa 26.1.2: Working well, Steam crashes occasionally, may be unrelated
-    # 2026-08-20: Mesa 26.2.1 got some promising updates, trying it now
-    # 2026-08-27: Reverted to Mesa 26.1.2
-    package = pkgsMesa26_1_2.mesa;
-    package32 = pkgsMesa26_1_2.pkgsi686Linux.mesa;
+    # 26.1.2: Working well, Steam crashes occasionally, may be unrelated
+    # 26.1.3-26.2.1: Crashes plasmashell, Firefox, and Chromium apps
+    # 2026-09-05: Trying Mesa 26.2.2
+    package = pkgsFast.mesa;
+    package32 = pkgsFast.pkgsi686Linux.mesa;
   };
   # This option is already set by nixos-hardware#common-gpu-amd
   # hardware.amdgpu.initrd.enable = lib.mkDefault true;
