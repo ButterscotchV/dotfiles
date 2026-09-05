@@ -46,6 +46,7 @@
     gimp
     imagemagick
     inkscape
+    kdePackages.kolourpaint
     krita
     pkgsLocal.pinga
     pkgsLocal.pingo
