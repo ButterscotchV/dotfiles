@@ -1,13 +1,14 @@
 {
   lib,
   config,
-  pkgs,
+  pkgsFast,
   ...
 }:
 
 {
   services.plex = {
     enable = true;
+    package = pkgsFast.plex;
     openFirewall = true;
     user = "butterscotch";
   };
@@ -22,8 +23,8 @@
       KillSignal = lib.mkForce "SIGKILL";
       Restart = lib.mkForce "no";
       TimeoutStopSec = 10;
-      ExecStop = pkgs.writeShellScript "plex-stop" ''
-        ${pkgs.procps}/bin/pkill --signal 15 --pidfile "${pidFile}"
+      ExecStop = pkgsFast.writeShellScript "plex-stop" ''
+        ${pkgsFast.procps}/bin/pkill --signal 15 --pidfile "${pidFile}"
 
         # Wait until Plex service has been shutdown
         # by checking if the PID file is gone
@@ -31,7 +32,7 @@
           sleep 0.1
         done
 
-        ${pkgs.coreutils}/bin/echo "Plex Media Server shutdown successful"
+        ${pkgsFast.coreutils}/bin/echo "Plex Media Server shutdown successful"
       '';
       PIDFile = lib.mkForce "";
     };
