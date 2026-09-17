@@ -2,6 +2,7 @@
 
 let
   keyPath = "/var/lib/harmonia/lamb-desktop-2.tail11fc37.ts.net-1.secret";
+  tlsCertPath = "/var/lib/certs/lamb-desktop-2.tail11fc37.ts.net.crt";
   tlsKeyPath = "/var/lib/harmonia/lamb-desktop-2.tail11fc37.ts.net.key";
 in
 {
@@ -21,7 +22,7 @@ in
       signKeyPaths = [ keyPath ];
       settings = {
         bind = "[::]:49023";
-        tls_cert_path = "/var/lib/certs/lamb-desktop-2.tail11fc37.ts.net.crt";
+        tls_cert_path = tlsCertPath;
         tls_key_path = tlsKeyPath;
       };
     };
