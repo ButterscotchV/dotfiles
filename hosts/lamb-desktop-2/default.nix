@@ -13,6 +13,7 @@
     ../../modules/system
     ../../modules/user
     ../../modules/user/harmonia.nix
+    ../../modules/user/llama.nix
     ../../modules/user/plex.nix
     ../../modules/user/gaming/vr.nix
   ];
