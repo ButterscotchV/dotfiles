@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
@@ -23,6 +24,15 @@ in
       inherit pkgs;
       libErosanix = inputs.erosanix.lib.${system};
     };
-    wivrnSolarXR = inputs.wivrn-solarxr.packages.${system}.default;
+    wivrnSolarXR = inputs.wivrn-solarxr.packages.${system}.default.overrideAttrs (
+      finalAttrs: prevAttrs: {
+        cmakeFlags = (lib.filter (flag: !lib.hasInfix "GIT_TAG" flag) prevAttrs.cmakeFlags) ++ [
+          (lib.cmakeFeature "GIT_DESC" "v${prevAttrs.version}-0-g${
+            builtins.substring 0 8 finalAttrs.version
+          }")
+          (lib.cmakeFeature "GIT_COMMIT" finalAttrs.version)
+        ];
+      }
+    );
   };
 }
