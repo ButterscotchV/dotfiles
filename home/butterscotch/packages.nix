@@ -22,6 +22,7 @@
 
     # === Communication ===
     discord
+    fluffychat
     stoat-desktop
     telegram-desktop
 
