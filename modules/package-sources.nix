@@ -17,6 +17,10 @@ in
       inherit system;
       config.allowUnfree = true;
     };
+    pkgsMesa26_2_2 = import inputs.nixpkgs-mesa-26_2_2 {
+      inherit system;
+      config.allowUnfree = true;
+    };
     pkgsXr = inputs.nixpkgs-xr.packages.${system};
     pkgsErosanix = inputs.erosanix.packages.${system};
     pkgsLocal = import ./pkgs {

@@ -9,6 +9,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-fast.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs-mesa-26_2_2.url = "github:NixOS/nixpkgs/be3dab5b1a3c41ed2db86093b9f4e048305630b7";
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs";
