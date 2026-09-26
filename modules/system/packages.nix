@@ -5,6 +5,7 @@
     curl
     dos2unix
     git
+    htop
     nano
     openssh
     vim
