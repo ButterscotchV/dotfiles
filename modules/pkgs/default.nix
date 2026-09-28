@@ -8,6 +8,8 @@ let
   xwintab = pkgs.callPackage ./xwintab { };
 in
 {
+  aternos-thanos = pkgs.callPackage ./aternos-thanos { };
+
   rebelle = pkgs.callPackage ./rebelle {
     inherit xwintab;
     mkWindowsApp = libErosanix.mkWindowsApp;

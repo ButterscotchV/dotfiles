@@ -88,6 +88,7 @@
     # === Gaming ===
     moonlight-qt
     owmods-gui
+    pkgsLocal.aternos-thanos # Trim Minecraft worlds
     (prismlauncher.override {
       additionalPrograms = [ ffmpeg ];
       jdks = [
