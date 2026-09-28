@@ -47,6 +47,6 @@
       yt-dlp-audio-b = "yt-dlp-audio --cookies-from-browser firefox --user-agent '${userAgent}'";
 
       # Run IntelliJ IDEA in the background
-      idea-bg = "nohup idea . >/dev/null 2>&1 &";
+      idea-bg = "nohup intellij-idea . >/dev/null 2>&1 &";
     };
 }
