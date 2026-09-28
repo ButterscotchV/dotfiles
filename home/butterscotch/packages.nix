@@ -58,9 +58,6 @@
     cyanrip
 
     # === Office ===
-    hunspell # Spellchecking for LibreOffice
-    hyphenDicts.en_CA
-    hyphenDicts.en_US
     kdePackages.skanlite
     kdePackages.skanpage
     libreoffice-qt
