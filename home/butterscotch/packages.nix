@@ -42,7 +42,9 @@
     yt-dlp
 
     # === Art/image editing ===
-    affinity-v3
+    # Disabled because it keeps taking forever to update with it
+    #  and I never actually use it
+    # affinity-v3
     darktable
     gimp
     imagemagick

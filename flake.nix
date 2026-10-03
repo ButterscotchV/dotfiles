@@ -29,10 +29,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.url = "github:NixOS/flake-compat";
     };
-    affinity-nix = {
-      url = "github:mrshmllow/affinity-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # affinity-nix = {
+    #   url = "github:mrshmllow/affinity-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nix-flatpak.url = "github:gmodena/nix-flatpak/latest";
     wivrn-solarxr = {
       url = "github:WiVRn/WiVRn/sapphire/solarxr-rewrite";

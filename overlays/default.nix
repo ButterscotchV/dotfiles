@@ -43,6 +43,6 @@
         xrizer = final.xrizer;
       };
     })
-    inputs.affinity-nix.overlays.default
+    # inputs.affinity-nix.overlays.default
   ];
 }
