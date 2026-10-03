@@ -39,20 +39,9 @@
         }
       );
       # Patch WiVRn for SlimeVR Rewrite
-      wivrn =
-        (inputs.wivrn-solarxr.packages.${prev.stdenv.hostPlatform.system}.default.override {
-          xrizer = final.xrizer;
-        }).overrideAttrs
-          (
-            finalAttrs: prevAttrs: {
-              cmakeFlags = (prev.lib.filter (flag: !prev.lib.hasInfix "GIT_TAG" flag) prevAttrs.cmakeFlags) ++ [
-                (prev.lib.cmakeFeature "GIT_DESC" "v${prevAttrs.version}-0-g${
-                  builtins.substring 0 8 finalAttrs.version
-                }")
-                (prev.lib.cmakeFeature "GIT_COMMIT" finalAttrs.version)
-              ];
-            }
-          );
+      wivrn = inputs.wivrn-solarxr.packages.${prev.stdenv.hostPlatform.system}.default.override {
+        xrizer = final.xrizer;
+      };
     })
     inputs.affinity-nix.overlays.default
   ];
