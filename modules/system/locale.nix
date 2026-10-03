@@ -12,8 +12,6 @@
     # KDE Spellcheck (Sonnet)
     aspell
     aspellDicts.en
-    aspellDicts.en-computers
-    aspellDicts.en-science
     hunspell
     hunspellDicts.en-ca
     hunspellDicts.en-ca-large
