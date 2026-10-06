@@ -24,6 +24,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
+    # For mkWindowsApp
     erosanix = {
       url = "github:emmanuelrosa/erosanix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,6 +35,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     nix-flatpak.url = "github:gmodena/nix-flatpak/latest";
+    # VR software
     wivrn-solarxr = {
       url = "github:WiVRn/WiVRn/sapphire/solarxr-rewrite";
       inputs.nixpkgs.follows = "nixpkgs";
