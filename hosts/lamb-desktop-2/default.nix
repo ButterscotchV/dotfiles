@@ -7,7 +7,7 @@
 {
   imports = [
     ../../overlays
-    ../../overlays/rocm-desktop.nix
+    ../../overlays/lamb-desktop.nix
     ./hardware-configuration.nix
     ./storage.nix
     ../../modules/system
