@@ -33,6 +33,7 @@
     haruna
     kdePackages.kamoso
     kdePackages.kdenlive
+    losslesscut
     pkgsRocm.blender
     plex-desktop
     plexamp
