@@ -1,23 +1,21 @@
 {
   lib,
-  mkWindowsApp,
+  libErosanix,
   wine,
   fetchzip,
   makeDesktopItem,
-  makeDesktopIcon,
   copyDesktopItems,
-  copyDesktopIcons,
 }:
 
-mkWindowsApp rec {
+libErosanix.mkWindowsAppNoCC rec {
   inherit wine;
 
   pname = "pinga";
-  version = "0.65.3";
+  version = "0.67";
 
   src = fetchzip {
-    url = "https://css-ig.net/bin/pinga-win64.zip";
-    sha256 = "sha256-Hos+/kuU3rWKdbV21HMt5cBBzwxSaj91iPc8ugeyBIw=";
+    url = "https://css-ig.net/bin/pinga.zip";
+    sha256 = "sha256-IzwzgSAtF5Qc7dtWekLFJb8I40BuJfhVhrslQrrAQHs=";
   };
 
   # By default, when a Wine prefix is first created Wine will produce a warning prompt if Mono is not installed.
@@ -38,7 +36,7 @@ mkWindowsApp rec {
 
   nativeBuildInputs = [
     copyDesktopItems
-    copyDesktopIcons
+    libErosanix.copyDesktopIcons
   ];
 
   # This code will become part of the launcher script.
@@ -49,7 +47,7 @@ mkWindowsApp rec {
   # WINEPREFIX, WINEARCH, AND WINEDLLOVERRIDES are set
   # and wine, winetricks, and cabextract are in the environment.
   winAppInstall = ''
-    wine "${src}/pinga.exe" /VERYSILENT /SUPPRESSMSGBOXES
+    $WINE "${src}/pinga.exe" /VERYSILENT /SUPPRESSMSGBOXES
   '';
 
   # This code runs before winAppRun, but only for the first instance.
@@ -65,7 +63,7 @@ mkWindowsApp rec {
   # Command line arguments are in $ARGS, not $@
   # DO NOT BLOCK. For example, don't run: wineserver -w
   winAppRun = ''
-    wine "$WINEPREFIX/drive_c/Program Files/pinga/pinga.exe" "$ARGS"
+    $WINE "$WINEPREFIX/drive_c/Program Files/pinga/pinga.exe" "$ARGS"
   '';
 
   # This code will run after winAppRun, but only for the first instance.
@@ -79,9 +77,12 @@ mkWindowsApp rec {
   # DO NOT DELETE OR RENAME the launcher. Instead, link to it as shown.
   installPhase = ''
     runHook preInstall
-
-    mv $out/bin/.launcher $out/bin/${pname}
-
+    OLD_LAUNCHER=$out/bin/.launcher
+    NEW_LAUNCHER=$out/bin/${pname}
+    # Correct `MY_PATH` in launcher script
+    substituteInPlace $OLD_LAUNCHER \
+      --replace-fail $OLD_LAUNCHER $NEW_LAUNCHER
+    mv $OLD_LAUNCHER $NEW_LAUNCHER
     runHook postInstall
   '';
 
@@ -101,7 +102,7 @@ mkWindowsApp rec {
     })
   ];
 
-  desktopIcon = makeDesktopIcon {
+  desktopIcon = libErosanix.makeDesktopIcon {
     name = pname;
     src = ./Pinga.png;
   };

@@ -1,16 +1,14 @@
 {
   lib,
-  mkWindowsApp,
+  libErosanix,
   wine,
   fetchurl,
   makeDesktopItem,
-  makeDesktopIcon,
   copyDesktopItems,
-  copyDesktopIcons,
   xwintab,
 }:
 
-mkWindowsApp rec {
+libErosanix.mkWindowsAppNoCC rec {
   inherit wine;
 
   pname = "rebelle";
@@ -39,7 +37,7 @@ mkWindowsApp rec {
 
   nativeBuildInputs = [
     copyDesktopItems
-    copyDesktopIcons
+    libErosanix.copyDesktopIcons
   ];
 
   # This code will become part of the launcher script.
@@ -50,9 +48,10 @@ mkWindowsApp rec {
   # WINEPREFIX, WINEARCH, AND WINEDLLOVERRIDES are set
   # and wine, winetricks, and cabextract are in the environment.
   winAppInstall = ''
-    ${wine}/bin/wine ${src} /VERYSILENT /SUPPRESSMSGBOXES
+    $WINE ${src} /VERYSILENT /SUPPRESSMSGBOXES
 
     # Symlink XWinTab DLLs to system32
+    # TODO Don't symlink DLLs, but provide them in an env var if possible
     SYS_DIR="$WINEPREFIX/drive_c/windows/system32"
     mkdir -p "$SYS_DIR"
     ln -sf "${xwintab}/wintab32.dll" "$SYS_DIR/"
@@ -73,7 +72,7 @@ mkWindowsApp rec {
   # DO NOT BLOCK. For example, don't run: wineserver -w
   winAppRun = ''
     export WINEDLLOVERRIDES="wintab32=n,b;$WINEDLLOVERRIDES"
-    ${wine}/bin/wine "$WINEPREFIX/drive_c/Program Files/Rebelle 7/Rebelle 7.exe" "$ARGS"
+    $WINE "$WINEPREFIX/drive_c/Program Files/Rebelle 7/Rebelle 7.exe" "$ARGS"
   '';
 
   # This code will run after winAppRun, but only for the first instance.
@@ -87,9 +86,12 @@ mkWindowsApp rec {
   # DO NOT DELETE OR RENAME the launcher. Instead, link to it as shown.
   installPhase = ''
     runHook preInstall
-
-    ln -s $out/bin/.launcher $out/bin/${pname}
-
+    OLD_LAUNCHER=$out/bin/.launcher
+    NEW_LAUNCHER=$out/bin/${pname}
+    # Correct `MY_PATH` in launcher script
+    substituteInPlace $OLD_LAUNCHER \
+      --replace-fail $OLD_LAUNCHER $NEW_LAUNCHER
+    mv $OLD_LAUNCHER $NEW_LAUNCHER
     runHook postInstall
   '';
 
@@ -104,7 +106,7 @@ mkWindowsApp rec {
     })
   ];
 
-  desktopIcon = makeDesktopIcon {
+  desktopIcon = libErosanix.makeDesktopIcon {
     name = pname;
     src = ./Rebelle_7.png;
   };

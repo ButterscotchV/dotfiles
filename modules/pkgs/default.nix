@@ -11,22 +11,16 @@ in
   aternos-thanos = pkgs.callPackage ./aternos-thanos { };
 
   rebelle = pkgs.callPackage ./rebelle {
-    inherit xwintab;
-    mkWindowsApp = libErosanix.mkWindowsApp;
+    inherit xwintab libErosanix;
     wine = pkgs.wineWow64Packages.staging;
-    makeDesktopIcon = libErosanix.makeDesktopIcon;
-    copyDesktopIcons = libErosanix.copyDesktopIcons;
   };
 
   pinga = pkgs.callPackage ./pinga {
-    mkWindowsApp = libErosanix.mkWindowsApp;
+    inherit libErosanix;
     wine = pkgs.wineWow64Packages.stable;
-    makeDesktopIcon = libErosanix.makeDesktopIcon;
-    copyDesktopIcons = libErosanix.copyDesktopIcons;
   };
 
   pingo = pkgs.callPackage ./pingo {
-    mkDerivation = pkgs.stdenvNoCC.mkDerivation;
     wine = pkgs.wineWow64Packages.stable;
   };
 

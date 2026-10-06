@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./cache/default.nix
     ./gaming/steam.nix
     ./peripherals/mouse.nix
     ./peripherals/printer.nix

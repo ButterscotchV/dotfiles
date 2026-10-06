@@ -1,11 +1,21 @@
 {
   pkgs,
-  pkgsLocal,
   pkgsErosanix,
-  pkgsStable,
+  pkgsLocal,
   ...
 }:
 
+let
+  prismlauncher-custom = pkgs.prismlauncher.override {
+    additionalPrograms = [ pkgs.ffmpeg ];
+    jdks = with pkgs; [
+      temurin-jre-bin-8
+      temurin-jre-bin-17
+      temurin-jre-bin-21
+      temurin-jre-bin-25
+    ];
+  };
+in
 {
   home.packages = with pkgs; [
     # === Archive ===
@@ -89,15 +99,7 @@
     moonlight-qt
     owmods-gui
     pkgsLocal.aternos-thanos # Trim Minecraft worlds
-    (prismlauncher.override {
-      additionalPrograms = [ ffmpeg ];
-      jdks = [
-        temurin-jre-bin-8
-        temurin-jre-bin-17
-        temurin-jre-bin-21
-        temurin-jre-bin-25
-      ];
-    })
+    prismlauncher-custom
     r2modman
     slimevr
 

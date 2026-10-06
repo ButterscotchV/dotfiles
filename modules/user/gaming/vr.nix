@@ -4,8 +4,6 @@
 }:
 
 {
-  # TODO: Runs as root? Can't run WayVR automatically if from autoStart - 2026-04-28
-  #  Edit: I've added WayVR to this service's config, see if that works! - 2026-07-20
   services.wivrn = {
     enable = true;
     openFirewall = true;
@@ -16,6 +14,7 @@
     # You should use the default configuration (which is no configuration), as that works the best out of the box.
     # However, if you need to configure something see https://github.com/WiVRn/WiVRn/blob/master/docs/configuration.md for configuration options and https://mynixos.com/nixpkgs/option/services.wivrn.config.json for an example configuration.
     config.json = {
+      # Needs to be explicitly defined so it can autorun on connection
       application = [ pkgs.wayvr ];
     };
   };
