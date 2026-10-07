@@ -62,4 +62,7 @@
       turbo = "auto";
     };
   };
+
+  # Enable NTSync for WINE
+  boot.kernelModules = [ "ntsync" ];
 }
