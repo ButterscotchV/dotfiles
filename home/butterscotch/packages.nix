@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgsStable,
   pkgsErosanix,
   pkgsLocal,
   ...
@@ -25,7 +26,7 @@ in
     zip
 
     # === Audio ===
-    audacity
+    pkgsStable.audacity
     kdePackages.kwave
     kid3-kde
     pwvucontrol
@@ -39,7 +40,8 @@ in
     # === Media ===
     ab-av1
     ffmpeg
-    handbrake
+    # Using pkgsStable because of failure to build ffmpeg-full-8.1.3
+    pkgsStable.handbrake
     haruna
     kdePackages.kamoso
     kdePackages.kdenlive

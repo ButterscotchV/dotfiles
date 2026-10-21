@@ -1,12 +1,13 @@
 {
   pkgs,
+  pkgsStable,
   ...
 }:
 
 {
   home.packages = with pkgs; [
     # === File management/sync ===
-    insync
+    pkgsStable.insync
 
     # === VR ===
     wayvr
